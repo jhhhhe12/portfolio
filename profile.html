@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원정보 - Hamini</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .profile-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 3rem;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .tab-button {
+            padding: 1rem 2rem;
+            border: none;
+            background: none;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab-button.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .info-group {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .info-group label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-group .value {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group input:disabled {
+            background: #f0f0f0;
+            cursor: not-allowed;
+        }
+
+        .button {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-right: 1rem;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .button.secondary {
+            background: #6c757d;
+        }
+
+        .message {
+            margin: 1rem 0;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+        }
+
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .back-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .back-link a:hover {
+            color: #764ba2;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="header">
+            <h1>회원정보</h1>
+            <p>회원님의 정보를 확인하고 수정할 수 있습니다</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="switchTab('view')">정보 확인</button>
+            <button class="tab-button" onclick="switchTab('edit')">정보 수정</button>
+        </div>
+
+        <div id="message" class="message"></div>
+
+        <!-- 정보 확인 탭 -->
+        <div id="viewTab" class="tab-content active">
+            <div class="info-group">
+                <label>이름</label>
+                <div class="value" id="view-name">-</div>
+            </div>
+            <div class="info-group">
+                <label>이메일</label>
+                <div class="value" id="view-email">-</div>
+            </div>
+            <div class="info-group">
+                <label>아이디</label>
+                <div class="value" id="view-username">-</div>
+            </div>
+            <div class="info-group">
+                <label>가입일</label>
+                <div class="value" id="view-created">-</div>
+            </div>
+        </div>
+
+        <!-- 정보 수정 탭 -->
+        <div id="editTab" class="tab-content">
+            <form id="editForm">
+                <div class="form-group">
+                    <label for="edit-name">이름</label>
+                    <input type="text" id="edit-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-email">이메일</label>
+                    <input type="email" id="edit-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-username">아이디</label>
+                    <input type="text" id="edit-username" name="username" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="edit-current-password">현재 비밀번호 (변경시에만 입력)</label>
+                    <input type="password" id="edit-current-password" name="current-password">
+                </div>
+                <div class="form-group">
+                    <label for="edit-new-password">새 비밀번호</label>
+                    <input type="password" id="edit-new-password" name="new-password">
+                </div>
+                <div class="form-group">
+                    <label for="edit-new-password-confirm">새 비밀번호 확인</label>
+                    <input type="password" id="edit-new-password-confirm" name="new-password-confirm">
+                </div>
+                <button type="submit" class="button">저장</button>
+                <button type="button" class="button secondary" onclick="switchTab('view')">취소</button>
+            </form>
+        </div>
+
+        <div class="back-link">
+            <a href="/">← 홈으로 돌아가기</a>
+        </div>
+    </div>
+
+    <script>
+        let userInfo = {};
+
+        function switchTab(tab) {
+            const viewTab = document.getElementById('viewTab');
+            const editTab = document.getElementById('editTab');
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const message = document.getElementById('message');
+
+            message.style.display = 'none';
+
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+
+            if (tab === 'view') {
+                viewTab.classList.add('active');
+                editTab.classList.remove('active');
+                tabButtons[0].classList.add('active');
+                loadUserInfo();
+            } else {
+                viewTab.classList.remove('active');
+                editTab.classList.add('active');
+                tabButtons[1].classList.add('active');
+                populateEditForm();
+            }
+        }
+
+        function showMessage(text, type) {
+            const message = document.getElementById('message');
+            message.textContent = text;
+            message.className = `message ${type}`;
+            message.style.display = 'block';
+        }
+
+        async function loadUserInfo() {
+            try {
+                const response = await fetch('/api/user/profile', {
+                    credentials: 'include'
+                });
+
+                if (response.status === 401) {
+                    alert('로그인이 필요합니다.');
+                    window.location.href = '/login';
+                    return;
+                }
+
+                const data = await response.json();
+
+                if (data.success) {
+                    userInfo = data.user;
+                    document.getElementById('view-name').textContent = data.user.name || '-';
+                    document.getElementById('view-email').textContent = data.user.email || '-';
+                    document.getElementById('view-username').textContent = data.user.username || '-';
+                    document.getElementById('view-created').textContent = new Date(data.user.created_at).toLocaleDateString('ko-KR');
+                } else {
+                    showMessage(data.message, 'error');
+                }
+            } catch (error) {
+                showMessage('정보를 불러오는데 실패했습니다.', 'error');
+            }
+        }
+
+        function populateEditForm() {
+            document.getElementById('edit-name').value = userInfo.name || '';
+            document.getElementById('edit-email').value = userInfo.email || '';
+            document.getElementById('edit-username').value = userInfo.username || '';
+            document.getElementById('edit-current-password').value = '';
+            document.getElementById('edit-new-password').value = '';
+            document.getElementById('edit-new-password-confirm').value = '';
+        }
+
+        document.getElementById('editForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('edit-name').value;
+            const email = document.getElementById('edit-email').value;
+            const currentPassword = document.getElementById('edit-current-password').value;
+            const newPassword = document.getElementById('edit-new-password').value;
+            const newPasswordConfirm = document.getElementById('edit-new-password-confirm').value;
+
+            // 비밀번호 변경 시 유효성 검사
+            if (newPassword || newPasswordConfirm) {
+                if (!currentPassword) {
+                    showMessage('현재 비밀번호를 입력해주세요.', 'error');
+                    return;
+                }
+                if (newPassword !== newPasswordConfirm) {
+                    showMessage('새 비밀번호가 일치하지 않습니다.', 'error');
+                    return;
+                }
+            }
+
+            try {
+                const response = await fetch('/api/user/profile', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify({
+                        name,
+                        email,
+                        currentPassword,
+                        newPassword
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    showMessage(data.message, 'success');
+                    setTimeout(() => {
+                        switchTab('view');
+                    }, 1500);
+                } else {
+                    showMessage(data.message, 'error');
+                }
+            } catch (error) {
+                showMessage('정보 수정에 실패했습니다.', 'error');
+            }
+        });
+
+        // 페이지 로드 시 사용자 정보 불러오기
+        window.addEventListener('load', loadUserInfo);
+    </script>
+</body>
+</html>

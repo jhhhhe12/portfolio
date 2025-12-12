@@ -63,6 +63,7 @@ app.get('/login', (req, res) => {
 // 로그인 처리
 app.post('/login', async (req, res) => {
     const { username, password } = req.body;
+    console.log('Login attempt:', username);
 
     if (!username || !password) {
         return res.status(400).json({ success: false, message: '아이디와 비밀번호를 입력해주세요.' });
@@ -70,48 +71,66 @@ app.post('/login', async (req, res) => {
 
     db.query('SELECT * FROM user WHERE username = ?', [username], async (err, results) => {
         if (err) {
-            console.error(err);
+            console.error('DB query error:', err);
             return res.status(500).json({ success: false, message: '서버 오류가 발생했습니다.' });
         }
 
         if (results.length === 0) {
+            console.log('User not found:', username);
             return res.status(401).json({ success: false, message: '아이디 또는 비밀번호가 잘못되었습니다.' });
         }
 
         const user = results[0];
-        const match = await bcrypt.compare(password, user.password);
+        console.log('User found:', user.username, 'ID:', user.id);
+        
+        try {
+            const match = await bcrypt.compare(password, user.password);
+            console.log('Password match:', match);
 
-        if (match) {
-            req.session.userId = user.id;
-            req.session.username = user.username;
-            console.log('Login successful - Setting session:', req.session);
-            req.session.save((err) => {
-                if (err) {
-                    console.error('Session save error:', err);
-                    return res.status(500).json({ success: false, message: '세션 저장 오류' });
-                }
-                console.log('Session saved successfully:', req.sessionID);
-                return res.json({ success: true, message: '로그인 성공', username: user.username });
-            });
-        } else {
-            return res.status(401).json({ success: false, message: '아이디 또는 비밀번호가 잘못되었습니다.' });
+            if (match) {
+                req.session.userId = user.id;
+                req.session.username = user.username;
+                console.log('Login successful - Setting session:', req.session);
+                req.session.save((err) => {
+                    if (err) {
+                        console.error('Session save error:', err);
+                        return res.status(500).json({ success: false, message: '세션 저장 오류' });
+                    }
+                    console.log('Session saved successfully:', req.sessionID);
+                    return res.json({ success: true, message: '로그인 성공', username: user.username });
+                });
+            } else {
+                console.log('Password mismatch');
+                return res.status(401).json({ success: false, message: '아이디 또는 비밀번호가 잘못되었습니다.' });
+            }
+        } catch (bcryptError) {
+            console.error('Bcrypt error:', bcryptError);
+            return res.status(500).json({ success: false, message: '서버 오류가 발생했습니다.' });
         }
     });
 });
 
 // 회원가입 처리
 app.post('/register', async (req, res) => {
-    const { username, password, email, full_name } = req.body;
+    const { username, password, email, name } = req.body;
 
     if (!username || !password) {
         return res.status(400).json({ success: false, message: '아이디와 비밀번호를 입력해주세요.' });
+    }
+
+    if (!email) {
+        return res.status(400).json({ success: false, message: '이메일을 입력해주세요.' });
+    }
+
+    if (!name) {
+        return res.status(400).json({ success: false, message: '이름을 입력해주세요.' });
     }
 
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
         
         db.query('INSERT INTO user (username, password, email, full_name, role, is_active) VALUES (?, ?, ?, ?, ?, ?)', 
-            [username, hashedPassword, email || null, full_name || '회원', 'member', 1], 
+            [username, hashedPassword, email, name, 'member', 1], 
             (err, results) => {
                 if (err) {
                     if (err.code === 'ER_DUP_ENTRY') {
@@ -120,7 +139,7 @@ app.post('/register', async (req, res) => {
                     console.error(err);
                     return res.status(500).json({ success: false, message: '서버 오류가 발생했습니다.' });
                 }
-                return res.json({ success: true, message: '회원가입이 완료되었습니다. 회원 등급으로 가입되었습니다.' });
+                return res.json({ success: true, message: '회원가입이 완료되었습니다.' });
             }
         );
     } catch (error) {
@@ -144,6 +163,94 @@ app.get('/check-auth', (req, res) => {
         res.json({ authenticated: true, username: req.session.username });
     } else {
         res.json({ authenticated: false });
+    }
+});
+
+// 회원정보 조회
+app.get('/api/user/profile', (req, res) => {
+    if (!req.session.userId) {
+        return res.status(401).json({ success: false, message: '로그인이 필요합니다.' });
+    }
+
+    db.query('SELECT id, username, email, full_name as name, created_at FROM user WHERE id = ?', 
+        [req.session.userId], 
+        (err, results) => {
+            if (err) {
+                console.error(err);
+                return res.status(500).json({ success: false, message: '서버 오류가 발생했습니다.' });
+            }
+
+            if (results.length === 0) {
+                return res.status(404).json({ success: false, message: '사용자를 찾을 수 없습니다.' });
+            }
+
+            res.json({ success: true, user: results[0] });
+        }
+    );
+});
+
+// 회원정보 수정
+app.put('/api/user/profile', async (req, res) => {
+    if (!req.session.userId) {
+        return res.status(401).json({ success: false, message: '로그인이 필요합니다.' });
+    }
+
+    const { name, email, currentPassword, newPassword } = req.body;
+
+    try {
+        // 비밀번호 변경하는 경우
+        if (newPassword) {
+            if (!currentPassword) {
+                return res.status(400).json({ success: false, message: '현재 비밀번호를 입력해주세요.' });
+            }
+
+            // 현재 비밀번호 확인
+            db.query('SELECT password FROM user WHERE id = ?', [req.session.userId], async (err, results) => {
+                if (err) {
+                    console.error(err);
+                    return res.status(500).json({ success: false, message: '서버 오류가 발생했습니다.' });
+                }
+
+                if (results.length === 0) {
+                    return res.status(404).json({ success: false, message: '사용자를 찾을 수 없습니다.' });
+                }
+
+                const match = await bcrypt.compare(currentPassword, results[0].password);
+                if (!match) {
+                    return res.status(401).json({ success: false, message: '현재 비밀번호가 일치하지 않습니다.' });
+                }
+
+                // 비밀번호 해싱
+                const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+                // 정보 업데이트 (비밀번호 포함)
+                db.query('UPDATE user SET full_name = ?, email = ?, password = ? WHERE id = ?',
+                    [name, email, hashedPassword, req.session.userId],
+                    (err) => {
+                        if (err) {
+                            console.error(err);
+                            return res.status(500).json({ success: false, message: '서버 오류가 발생했습니다.' });
+                        }
+                        res.json({ success: true, message: '회원정보가 수정되었습니다.' });
+                    }
+                );
+            });
+        } else {
+            // 비밀번호 변경 없이 정보만 수정
+            db.query('UPDATE user SET full_name = ?, email = ? WHERE id = ?',
+                [name, email, req.session.userId],
+                (err) => {
+                    if (err) {
+                        console.error(err);
+                        return res.status(500).json({ success: false, message: '서버 오류가 발생했습니다.' });
+                    }
+                    res.json({ success: true, message: '회원정보가 수정되었습니다.' });
+                }
+            );
+        }
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ success: false, message: '서버 오류가 발생했습니다.' });
     }
 });
 

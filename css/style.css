@@ -111,7 +111,6 @@ header {
     background-clip: text;
     flex: 1;
     text-align: center;
-    margin-left: 30px;
 }
 
 nav {
@@ -134,6 +133,10 @@ nav ul {
     justify-content: center;
 }
 
+nav ul li {
+    display: inline-block;
+}
+
 /* Login Button */
 .login-btn {
     text-decoration: none;
@@ -144,6 +147,8 @@ nav ul {
     border-radius: 5px;
     transition: var(--transition);
     white-space: nowrap;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .login-btn:hover {
@@ -152,6 +157,110 @@ nav ul {
 }
 
 .login-btn::after {
+    display: none;
+}
+
+/* 로그인 시 Login 버튼 숨김 */
+nav:has(.user-dropdown[style*="inline-block"]) .login-btn {
+    display: none !important;
+}
+
+/* User Dropdown */
+.user-dropdown {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.user-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.2rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: nowrap;
+    height: 100%;
+    min-height: 38px;
+}
+
+.user-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.user-icon {
+    font-size: 1.1rem;
+}
+
+.user-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-arrow {
+    font-size: 0.7rem;
+    margin-left: 0.2rem;
+    transition: transform 0.3s ease;
+}
+
+.user-dropdown-menu.show ~ .user-btn .user-arrow {
+    transform: rotate(180deg);
+}
+
+.user-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    min-width: 140px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    overflow: hidden;
+}
+
+.user-dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.user-dropdown-menu a {
+    display: block;
+    padding: 0.8rem 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.user-dropdown-menu a:last-child {
+    border-bottom: none;
+}
+
+.user-dropdown-menu a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.user-dropdown-menu a::after {
     display: none;
 }
 
@@ -271,6 +380,87 @@ nav a::after {
     border-radius: 0 0 8px 8px;
 }
 
+/* User Dropdown */
+.user-dropdown {
+    position: relative;
+}
+
+.user-dropdown-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.user-dropdown-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.user-icon {
+    font-size: 1.2rem;
+}
+
+.dropdown-arrow {
+    font-size: 0.7rem;
+    transition: transform 0.3s ease;
+}
+
+.user-dropdown.active .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    min-width: 180px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    overflow: hidden;
+}
+
+.user-dropdown.active .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.3s;
+    font-size: 0.95rem;
+}
+
+.dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+}
+
+.dropdown-item span {
+    font-size: 1.1rem;
+}
+
 nav a:hover::after {
     width: 100%;
 }
@@ -325,17 +515,13 @@ nav a::before {
 }
 
 .hero-content .subtitle {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     margin-bottom: 1rem;
     font-weight: 800;
-    background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: 0 4px 12px rgba(255,255,255,0.3);
     letter-spacing: -0.02em;
     opacity: 0;
     animation: fadeInUp 0.5s ease 0.2s forwards;
+    position: relative;
 }
 
 /* Typing Effect */
@@ -351,9 +537,54 @@ nav a::before {
     white-space: nowrap;
     animation: typing 2s steps(30) 0.3s forwards, blink-caret 0.75s step-end infinite;
     max-width: 0;
+    background: linear-gradient(135deg, #ffffff 0%, #ffd700 25%, #ffffff 50%, #87ceeb 75%, #ffffff 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: typing 2s steps(30) 0.3s forwards, blink-caret 0.75s step-end infinite, sparkle 2s ease-in-out infinite;
+    position: relative;
+    filter: brightness(1.2);
 }
 
-@keyframes typing {
+.typing-text::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+    animation: shine 2.5s infinite;
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        background-position: 0% 50%;
+        filter: brightness(1.2) drop-shadow(0 0 5px rgba(255,255,255,0.5));
+    }
+    25% {
+        background-position: 50% 0%;
+        filter: brightness(1.4) drop-shadow(0 0 8px rgba(255,215,0,0.6));
+    }
+    50% {
+        background-position: 100% 50%;
+        filter: brightness(1.3) drop-shadow(0 0 6px rgba(135,206,235,0.5));
+    }
+    75% {
+        background-position: 50% 100%;
+        filter: brightness(1.4) drop-shadow(0 0 8px rgba(255,255,255,0.6));
+    }
+}
+
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+    50%, 100% {
+        left: 100%;
+    }
+}
     from { max-width: 0; }
     to { max-width: 100%; }
 }
@@ -612,6 +843,159 @@ section h2 {
     box-shadow: var(--shadow-sm);
 }
 
+/* Timeline Section */
+.timeline {
+    background: var(--bg-light);
+    padding: 8rem 0;
+    overflow: visible;
+}
+
+.timeline h2 {
+    margin-bottom: 1rem;
+}
+
+.timeline .section-subtitle {
+    margin-bottom: 10rem;
+}
+
+.timeline-infographic {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 500px;
+}
+
+.timeline-line {
+    position: absolute;
+    top: 50%;
+    left: 2rem;
+    right: 2rem;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        rgba(102, 126, 234, 0.8) 0%, 
+        rgba(118, 75, 162, 0.8) 25%, 
+        rgba(102, 126, 234, 0.8) 50%,
+        rgba(118, 75, 162, 0.8) 75%,
+        rgba(102, 126, 234, 0.8) 100%);
+    z-index: 0;
+    box-shadow: 0 2px 15px rgba(102, 126, 234, 0.4);
+}
+
+.timeline-node {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    flex: 1;
+}
+
+.node-circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4), 0 0 0 3px rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.node-circle::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background: linear-gradient(to bottom, rgba(102, 126, 234, 0.4), rgba(118, 75, 162, 0.2));
+    z-index: 1;
+    display: none;
+}
+
+.node-circle:hover {
+    transform: scale(1.15);
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.5), 0 0 0 4px rgba(255, 255, 255, 0.2), 0 0 20px rgba(118, 75, 162, 0.4);
+}
+
+.node-icon {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.node-content {
+    position: absolute;
+    width: 220px;
+    background: white;
+    padding: 1.3rem 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.node-content::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(to bottom, rgba(102, 126, 234, 0.4), rgba(118, 75, 162, 0.2));
+    z-index: -1;
+}
+
+.node-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.node-top {
+    bottom: 100%;
+    margin-bottom: 50px;
+}
+
+.node-top::before {
+    top: 100%;
+    height: 50px;
+}
+
+.node-bottom {
+    top: 100%;
+    margin-top: 50px;
+}
+
+.node-bottom::before {
+    bottom: 100%;
+    height: 50px;
+}
+
+.node-year {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.node-content h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.node-content p {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    white-space: pre-line;
+}
+
 /* Philosophy Section */
 .philosophy {
     background: var(--white);
@@ -623,6 +1007,10 @@ section h2 {
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     margin-top: 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 2rem;
 }
 
 .philosophy-card {
@@ -1075,7 +1463,72 @@ footer p {
         font-size: 1.3rem;
     }
     
-    /* Philosophy Section Mobile */
+    /* Timeline Section Mobile */
+    .timeline {
+        padding: 3rem 1rem !important;
+        overflow-x: hidden;
+    }
+
+    .timeline-infographic {
+        flex-direction: column;
+        padding: 2rem 1rem;
+        gap: 3rem;
+    }
+
+    .timeline-line {
+        display: none;
+    }
+
+    .timeline-node {
+        width: 100%;
+    }
+
+    .node-circle {
+        width: 60px;
+        height: 60px;
+        position: relative;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4), 0 0 0 3px rgba(255, 255, 255, 0.1);
+    }
+
+    .node-icon {
+        font-size: 0.7rem;
+        color: white;
+    }
+
+    .node-content {
+        position: static;
+        width: 100%;
+        max-width: 300px;
+        margin-top: 1rem;
+    }
+
+    .node-content::before {
+        display: none;
+    }
+
+    .node-top,
+    .node-bottom {
+        margin: 1rem 0 0 0;
+    }
+
+    .node-top::before,
+    .node-bottom::before {
+        display: none;
+    }
+
+    .node-year {
+        font-size: 0.75rem;
+    }
+
+    .node-content h4 {
+        font-size: 0.9rem;
+    }
+
+    .node-content p {
+        font-size: 0.75rem;
+    }
+
     .philosophy {
         padding: 3rem 1rem !important;
     }
@@ -1135,6 +1588,52 @@ footer p {
     .tech-tag {
         font-size: 0.75rem;
         padding: 0.25rem 0.6rem;
+    }
+
+    /* Timeline Arrow Mobile */
+    .timeline {
+        padding: 3rem 0 !important;
+    }
+
+    .timeline-arrow-container {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 2rem 1rem;
+        align-items: stretch;
+        min-width: auto;
+    }
+
+    .arrow-item {
+        width: 100%;
+    }
+
+    .arrow-shape {
+        width: 100%;
+        height: 60px;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%) !important;
+        border-radius: 8px;
+    }
+
+    .arrow-year {
+        font-size: 1rem;
+    }
+
+    .arrow-content {
+        margin-top: 1rem;
+        padding: 1.2rem 1rem;
+        width: 100%;
+    }
+
+    .arrow-icon {
+        font-size: 1.8rem;
+    }
+
+    .arrow-content h4 {
+        font-size: 0.95rem;
+    }
+
+    .arrow-content p {
+        font-size: 0.8rem;
     }
 
     /* Contact Section Mobile */
@@ -1464,4 +1963,179 @@ header.scrolled .login-btn:not(.logged-in) {
 
 header.scrolled .login-btn:hover {
     background: white;
+}
+
+/* Profile Modal Styles */
+.profile-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.profile-modal-content {
+    background: rgba(30, 30, 30, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+    padding: 2.5rem 2rem;
+    width: 90%;
+    max-width: 420px;
+    position: relative;
+    animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.profile-modal-close {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+    font-size: 2rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: all 0.3s;
+    line-height: 1;
+}
+
+.profile-modal-close:hover {
+    color: white;
+    transform: rotate(90deg);
+}
+
+.profile-modal-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.profile-modal-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.profile-modal-header p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+}
+
+.profile-modal-body {
+    margin-bottom: 1.5rem;
+}
+
+.profile-info-group {
+    margin-bottom: 1.5rem;
+}
+
+.profile-info-group label {
+    display: block;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.profile-info-group input {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    font-size: 1rem;
+    color: white;
+    cursor: default;
+}
+
+.profile-info-group input:focus {
+    outline: none;
+}
+
+.profile-modal-footer {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.profile-modal-btn {
+    padding: 0.6rem 1.2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.profile-modal-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.5);
+}
+
+.profile-modal-btn:active {
+    transform: translateY(0);
+}
+
+.profile-edit-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.profile-edit-btn:hover {
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.5);
+}
+
+.profile-save-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.profile-cancel-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.profile-cancel-btn:hover {
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.5);
+}
+
+.profile-info-group input:not([readonly]):not([disabled]) {
+    cursor: text;
+    background: rgba(0, 0, 0, 0.5) !important;
+}
+
+.profile-info-group input:not([readonly]):not([disabled]):focus {
+    border-color: #667eea;
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
 }
