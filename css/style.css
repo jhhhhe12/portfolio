@@ -516,11 +516,11 @@ section h2 {
     overflow: hidden;
     white-space: nowrap;
     width: 0;
-    animation: typing 3s steps(60) forwards;
+    animation: typing 1.5s steps(60) forwards;
 }
 
 .profile-typing-delay {
-    animation: typing 3s steps(60) 3.2s forwards;
+    animation: typing 1.5s steps(60) 1.6s forwards;
 }
 
 @keyframes typing {
