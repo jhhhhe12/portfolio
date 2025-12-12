@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>보행영상 AI 프로젝트 - Hamini Portfolio</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/project-detail.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo"><a href="/" style="text-decoration: none; color: inherit;">Hamini</a></div>
+            <nav>
+                <ul>
+                    <li><a href="/#home">Home</a></li>
+                    <li><a href="/#about">About</a></li>
+                    <li><a href="/#philosophy">Philosophy</a></li>
+                    <li><a href="/#architecture">Architecture</a></li>
+                    <li><a href="/#projects">Projects</a></li>
+                    <li><a href="/board">Board</a></li>
+                    <li><a href="/#contact">Contact</a></li>
+                    <li><a href="/login.html" class="login-btn">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Project Detail Section -->
+    <section class="project-detail">
+        <div class="project-header">
+            <a href="/#projects" class="back-link">← 프로젝트 목록으로</a>
+            <h1>보행영상 AI 프로젝트</h1>
+            <p class="project-period">2024.06 - 2024.08</p>
+            <div class="tech-stack">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">TensorFlow</span>
+                <span class="tech-tag">OpenCV</span>
+                <span class="tech-tag">FastAPI</span>
+                <span class="tech-tag">Docker</span>
+            </div>
+        </div>
+
+        <div class="project-content">
+            <section class="project-section">
+                <h2>프로젝트 개요</h2>
+                <p>
+                    딥러닝 기반 보행 패턴 분석 시스템으로, 영상 데이터에서 사람의 보행 자세를 
+                    실시간으로 분석하고 이상 패턴을 자동으로 감지하는 AI 모델을 개발했습니다.
+                    의료 및 재활 분야에서 환자의 보행 상태를 모니터링하는 데 활용될 수 있습니다.
+                </p>
+                <div class="github-section" style="margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; text-align: center;">
+                    <h3 style="color: white; margin-bottom: 1rem;">📁 프로젝트 파일</h3>
+                    <p style="color: rgba(255,255,255,0.9); margin-bottom: 1.5rem;">GitHub에서 전체 소스 코드를 확인하실 수 있습니다</p>
+                    <a href="https://github.com/jhhhhe12/ai-walking-analysis" target="_blank" rel="noopener noreferrer" style="display: inline-block; padding: 12px 30px; background: white; color: #667eea; text-decoration: none; border-radius: 8px; font-weight: 600; transition: transform 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.2);" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <span style="font-size: 1.2rem;">⭐</span> GitHub 저장소 보기
+                    </a>
+                </div>
+            </section>
+
+            <section class="project-section">
+                <h2>주요 기능</h2>
+                <ul class="feature-list">
+                    <li>🎥 실시간 영상 스트림 처리</li>
+                    <li>🤖 YOLOv8 기반 사람 객체 감지</li>
+                    <li>🦴 MediaPipe를 활용한 골격 추출</li>
+                    <li>📈 보행 패턴 분석 및 이상 탐지</li>
+                    <li>📊 보행 데이터 시각화 대시보드</li>
+                    <li>💾 분석 결과 자동 저장 및 리포트 생성</li>
+                </ul>
+            </section>
+
+            <section class="project-section">
+                <h2>시스템 아키텍처</h2>
+                <div class="diagram-container">
+                    <div class="diagram-placeholder">
+                        <p>📊 AI 파이프라인 다이어그램</p>
+                        <p class="diagram-desc">Video Input → Object Detection → Pose Estimation → Analysis → Output</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="project-section">
+                <h2>모델 구조</h2>
+                <div class="diagram-container">
+                    <div class="diagram-placeholder">
+                        <p>🧠 AI 모델 아키텍처</p>
+                        <p class="diagram-desc">YOLOv8 + MediaPipe + Custom Classification Model</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="project-section">
+                <h2>기술적 도전과 해결</h2>
+                <div class="challenge-box">
+                    <h3>🎯 실시간 처리 성능 최적화</h3>
+                    <p><strong>문제:</strong> 고해상도 영상 처리 시 프레임 드롭 발생</p>
+                    <p><strong>해결:</strong> TensorRT를 활용한 모델 최적화로 추론 속도 3배 향상</p>
+                </div>
+                <div class="challenge-box">
+                    <h3>🎯 다양한 환경에서의 정확도</h3>
+                    <p><strong>문제:</strong> 조명, 각도, 배경에 따라 감지 정확도 편차 발생</p>
+                    <p><strong>해결:</strong> Data Augmentation과 Transfer Learning으로 mAP 88% 달성</p>
+                </div>
+            </section>
+
+            <section class="project-section">
+                <h2>성과 및 결과</h2>
+                <div class="result-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">88%</div>
+                        <div class="stat-label">감지 정확도</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">30 FPS</div>
+                        <div class="stat-label">실시간 처리 속도</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label">학습 데이터셋</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Hamini. All rights reserved.</p>
+        <p>Built with passion and dedication</p>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

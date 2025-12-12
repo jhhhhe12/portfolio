@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS 프로젝트 - Hamini Portfolio</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/project-detail.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo"><a href="/" style="text-decoration: none; color: inherit;">Hamini</a></div>
+            <nav>
+                <ul>
+                    <li><a href="/#home">Home</a></li>
+                    <li><a href="/#about">About</a></li>
+                    <li><a href="/#philosophy">Philosophy</a></li>
+                    <li><a href="/#architecture">Architecture</a></li>
+                    <li><a href="/#projects">Projects</a></li>
+                    <li><a href="/board">Board</a></li>
+                    <li><a href="/#contact">Contact</a></li>
+                    <li><a href="/login.html" class="login-btn">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Project Detail Section -->
+    <section class="project-detail">
+        <div class="project-header">
+            <a href="/#projects" class="back-link">← 프로젝트 목록으로</a>
+            <h1>AWS 클라우드 프로젝트</h1>
+            <p class="project-period">2024.03 - 2024.05</p>
+            <div class="tech-stack">
+                <span class="tech-tag">AWS EC2</span>
+                <span class="tech-tag">AWS S3</span>
+                <span class="tech-tag">AWS RDS</span>
+                <span class="tech-tag">CloudFormation</span>
+                <span class="tech-tag">Terraform</span>
+            </div>
+        </div>
+
+        <div class="project-content">
+            <section class="project-section">
+                <h2>프로젝트 개요</h2>
+                <p>
+                    AWS 클라우드 서비스를 활용하여 고가용성, 확장 가능한 인프라를 설계하고 구현한 프로젝트입니다.
+                    Infrastructure as Code(IaC) 접근 방식을 통해 자동화된 배포 파이프라인을 구축하고,
+                    안정적인 서비스 운영 환경을 제공합니다.
+                </p>
+                <div class="github-section" style="margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; text-align: center;">
+                    <h3 style="color: white; margin-bottom: 1rem;">📁 프로젝트 파일</h3>
+                    <p style="color: rgba(255,255,255,0.9); margin-bottom: 1.5rem;">GitHub에서 전체 소스 코드를 확인하실 수 있습니다</p>
+                    <a href="https://github.com/jhhhhe12/aws-infrastructure" target="_blank" rel="noopener noreferrer" style="display: inline-block; padding: 12px 30px; background: white; color: #667eea; text-decoration: none; border-radius: 8px; font-weight: 600; transition: transform 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.2);" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <span style="font-size: 1.2rem;">⭐</span> GitHub 저장소 보기
+                    </a>
+                </div>
+            </section>
+
+            <section class="project-section">
+                <h2>주요 구성 요소</h2>
+                <ul class="feature-list">
+                    <li>☁️ Multi-AZ 구성으로 고가용성 확보</li>
+                    <li>🔄 Auto Scaling을 통한 자동 확장</li>
+                    <li>🔒 VPC, Security Group을 통한 네트워크 보안</li>
+                    <li>💾 S3를 활용한 정적 파일 호스팅</li>
+                    <li>🗄️ RDS를 이용한 관리형 데이터베이스</li>
+                    <li>📊 CloudWatch 기반 모니터링 및 알람</li>
+                </ul>
+            </section>
+
+            <section class="project-section">
+                <h2>AWS 인프라 아키텍처</h2>
+                <div class="diagram-container">
+                    <div class="diagram-placeholder">
+                        <p>📊 AWS 아키텍처 다이어그램</p>
+                        <p class="diagram-desc">VPC - ALB - EC2 Auto Scaling - RDS Multi-AZ</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="project-section">
+                <h2>네트워크 구성도</h2>
+                <div class="diagram-container">
+                    <div class="diagram-placeholder">
+                        <p>🌐 VPC 네트워크 다이어그램</p>
+                        <p class="diagram-desc">Public/Private Subnet, NAT Gateway, Internet Gateway</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="project-section">
+                <h2>기술적 도전과 해결</h2>
+                <div class="challenge-box">
+                    <h3>🎯 비용 최적화</h3>
+                    <p><strong>문제:</strong> 초기 클라우드 비용이 예상보다 높게 발생</p>
+                    <p><strong>해결:</strong> Reserved Instance와 Spot Instance 활용으로 월 비용 40% 절감</p>
+                </div>
+                <div class="challenge-box">
+                    <h3>🎯 무중단 배포</h3>
+                    <p><strong>문제:</strong> 업데이트 시 서비스 중단 발생</p>
+                    <p><strong>해결:</strong> Blue-Green Deployment 전략으로 무중단 배포 구현</p>
+                </div>
+            </section>
+
+            <section class="project-section">
+                <h2>성과 및 결과</h2>
+                <div class="result-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">99.9%</div>
+                        <div class="stat-label">서비스 가용성</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">40%</div>
+                        <div class="stat-label">비용 절감</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">< 200ms</div>
+                        <div class="stat-label">평균 응답 시간</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Hamini. All rights reserved.</p>
+        <p>Built with passion and dedication</p>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>
