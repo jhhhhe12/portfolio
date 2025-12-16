@@ -221,6 +221,17 @@
             border: 1px solid #f5c6cb;
         }
 
+        .error-message {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #ef4444;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
         .back-link {
             text-align: center;
             margin-top: 1.5rem;
@@ -244,11 +255,47 @@
     </style>
 </head>
 <body>
+    <script>
+        // URL 파라미터에서 에러 확인
+        window.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const error = urlParams.get('error');
+            const errorMsg = document.getElementById('errorMessage');
+            
+            if (error) {
+                let message = '';
+                switch(error) {
+                    case 'password':
+                        message = '아이디 또는 비밀번호가 잘못되었습니다.';
+                        break;
+                    case 'notfound':
+                        message = '아이디 또는 비밀번호가 잘못되었습니다.';
+                        break;
+                    case '1':
+                    case '2':
+                    case '3':
+                        message = '로그인 처리 중 오류가 발생했습니다.';
+                        break;
+                    default:
+                        message = '로그인에 실패했습니다.';
+                }
+                errorMsg.textContent = message;
+                errorMsg.style.display = 'block';
+                
+                // URL에서 error 파라미터 제거
+                const url = new URL(window.location);
+                url.searchParams.delete('error');
+                window.history.replaceState({}, document.title, url);
+            }
+        });
+    </script>
     <div class="login-container">
         <div class="logo">
             <h1>Hamini</h1>
-            <p id="welcomeText">Welcome !</p>
+            <p id="welcomeText">Welcome back!</p>
         </div>
+
+        <div id="errorMessage" class="error-message" style="display: none;"></div>
 
         <div class="tab-buttons">
             <button class="tab-button active" onclick="switchTab('login')">로그인</button>
@@ -371,6 +418,8 @@
             message.style.display = 'block';
         }
 
+        // 로그인 폼은 직접 제출 (JavaScript 불필요)
+        
         // 로그인 폼 제출
         document.getElementById('loginForm').addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -378,6 +427,7 @@
             const username = document.getElementById('login-username').value;
             const password = document.getElementById('login-password').value;
             const welcomeText = document.getElementById('welcomeText');
+            const errorMsg = document.getElementById('errorMessage');
 
             try {
                 const response = await fetch('/login', {
@@ -394,32 +444,24 @@
                 if (data.success) {
                     welcomeText.textContent = '로그인 성공!';
                     welcomeText.style.color = '#4ade80';
-                    welcomeText.style.fontSize = '0.95rem';
                     setTimeout(() => {
-                        window.location.href = '/';
-                    }, 800);
+                        window.location.href = '/?t=' + Date.now();
+                    }, 500);
                 } else {
-                    welcomeText.textContent = '아이디 또는 비밀번호 오류';
-                    welcomeText.style.color = '#ef4444';
-                    welcomeText.style.fontSize = '0.95rem';
-                    setTimeout(() => {
-                        welcomeText.textContent = 'Welcome back!';
-                        welcomeText.style.color = 'rgba(255, 255, 255, 0.7)';
-                        welcomeText.style.fontSize = '1.1rem';
-                    }, 2000);
+                    if (errorMsg) {
+                        errorMsg.textContent = '아이디 또는 비밀번호가 잘못되었습니다.';
+                        errorMsg.style.display = 'block';
+                    }
                 }
             } catch (error) {
-                welcomeText.textContent = '아이디 또는 비밀번호 오류';
-                welcomeText.style.color = '#ef4444';
-                welcomeText.style.fontSize = '0.95rem';
-                setTimeout(() => {
-                    welcomeText.textContent = 'Welcome back!';
-                    welcomeText.style.color = 'rgba(255, 255, 255, 0.7)';
-                    welcomeText.style.fontSize = '1.1rem';
-                }, 2000);
+                console.error('Login error:', error);
+                if (errorMsg) {
+                    errorMsg.textContent = '로그인 처리 중 오류가 발생했습니다.';
+                    errorMsg.style.display = 'block';
+                }
             }
         });
-
+        
         // 회원가입 폼 제출
         document.getElementById('registerForm').addEventListener('submit', async (e) => {
             e.preventDefault();

@@ -111,6 +111,10 @@ header {
     background-clip: text;
     flex: 1;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 110px;
 }
 
 nav {
@@ -135,6 +139,7 @@ nav ul {
 
 nav ul li {
     display: inline-block;
+    margin: 0 15px;
 }
 
 /* Login Button */
@@ -631,17 +636,20 @@ nav a::before {
 
 .cta-button {
     display: inline-block;
-    padding: 1rem 2.5rem;
-    background: var(--white);
-    color: var(--primary-color);
+    padding: 0.7rem 1.5rem;
+    background: transparent;
+    color: #ff8558;
     text-decoration: none;
     border-radius: 50px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
     font-weight: 700;
     transition: var(--transition);
     margin-top: 1rem;
 }
 
 .cta-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
     transform: translateY(-3px);
     box-shadow: var(--shadow-lg);
 }
@@ -729,25 +737,22 @@ section h2 {
     text-align: center;
     color: var(--text-dark);
     margin-bottom: 3rem;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 600;
     line-height: 2;
     padding: 0 2rem;
     max-width: 900px;
     margin-left: auto;
     margin-right: auto;
+    white-space: normal;
 }
 
 .profile-typing {
-    display: inline-block;
+    display: inline;
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    overflow: hidden;
-    white-space: nowrap;
-    width: 0;
-    animation: typing 1.5s steps(60) forwards;
 }
 
 .profile-typing-delay {
@@ -822,6 +827,11 @@ section h2 {
     line-height: 1.8;
 }
 
+.about-text p strong {
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
 .skills {
     display: flex;
     flex-wrap: wrap;
@@ -876,13 +886,18 @@ section h2 {
     right: 2rem;
     height: 4px;
     background: linear-gradient(90deg, 
-        rgba(102, 126, 234, 0.8) 0%, 
-        rgba(118, 75, 162, 0.8) 25%, 
-        rgba(102, 126, 234, 0.8) 50%,
-        rgba(118, 75, 162, 0.8) 75%,
-        rgba(102, 126, 234, 0.8) 100%);
+        #84fab0 0%, 
+        #8fd3f4 12%, 
+        #a1c4fd 24%, 
+        #667eea 36%, 
+        #f093fb 48%, 
+        #4facfe 60%, 
+        #43e97b 72%, 
+        #fa709a 84%, 
+        #30cfd0 96%, 
+        #a8edea 100%);
     z-index: 0;
-    box-shadow: 0 2px 15px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
 }
 
 .timeline-node {
@@ -901,54 +916,34 @@ section h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4), 0 0 0 3px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     position: relative;
     z-index: 2;
     transition: all 0.3s ease;
     cursor: pointer;
 }
 
-.node-circle::before {
-    content: '';
-    position: absolute;
-    width: 2px;
-    background: linear-gradient(to bottom, rgba(102, 126, 234, 0.4), rgba(118, 75, 162, 0.2));
-    z-index: 1;
-    display: none;
-}
-
 .node-circle:hover {
     transform: scale(1.15);
-    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.5), 0 0 0 4px rgba(255, 255, 255, 0.2), 0 0 20px rgba(118, 75, 162, 0.4);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
 }
 
 .node-icon {
     font-size: 0.85rem;
     font-weight: 700;
     color: white;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .node-content {
     position: absolute;
-    width: 220px;
+    width: 300px;
     background: white;
-    padding: 1.3rem 1rem;
+    padding: 1.5rem 1.3rem;
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    text-align: left;
     transition: all 0.3s ease;
-}
-
-.node-content::before {
-    content: '';
-    position: absolute;
-    width: 2px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: linear-gradient(to bottom, rgba(102, 126, 234, 0.4), rgba(118, 75, 162, 0.2));
-    z-index: -1;
 }
 
 .node-content:hover {
@@ -961,9 +956,15 @@ section h2 {
     margin-bottom: 50px;
 }
 
-.node-top::before {
+.node-top::after {
+    content: '';
+    position: absolute;
     top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
     height: 50px;
+    background: linear-gradient(to bottom, rgba(255, 107, 53, 0.5), transparent);
 }
 
 .node-bottom {
@@ -971,15 +972,22 @@ section h2 {
     margin-top: 50px;
 }
 
-.node-bottom::before {
+.node-bottom::after {
+    content: '';
+    position: absolute;
     bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
     height: 50px;
+    background: linear-gradient(to top, rgba(255, 107, 53, 0.5), transparent);
 }
 
 .node-year {
     font-size: 1.8rem;
     margin-bottom: 0.8rem;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    text-align: center;
 }
 
 .node-content h4 {
@@ -987,13 +995,15 @@ section h2 {
     font-weight: 700;
     color: var(--text-dark);
     margin-bottom: 0.5rem;
+    text-align: center;
 }
 
 .node-content p {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: var(--text-light);
-    line-height: 1.6;
+    line-height: 1.8;
     white-space: pre-line;
+    text-align: center;
 }
 
 /* Philosophy Section */
@@ -1487,13 +1497,10 @@ footer p {
         width: 60px;
         height: 60px;
         position: relative;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-        box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4), 0 0 0 3px rgba(255, 255, 255, 0.1);
     }
 
     .node-icon {
-        font-size: 0.7rem;
-        color: white;
+        font-size: 1.8rem;
     }
 
     .node-content {
@@ -1503,18 +1510,9 @@ footer p {
         margin-top: 1rem;
     }
 
-    .node-content::before {
-        display: none;
-    }
-
     .node-top,
     .node-bottom {
         margin: 1rem 0 0 0;
-    }
-
-    .node-top::before,
-    .node-bottom::before {
-        display: none;
     }
 
     .node-year {
