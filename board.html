@@ -445,7 +445,7 @@
                             <span class="user-arrow">▼</span>
                         </button>
                         <div class="user-dropdown-menu">
-                            <a href="/profile.html" data-ko="회원정보" data-en="Profile">회원정보</a>
+                            <a href="#" id="myPageBtn" data-ko="마이페이지" data-en="My Page">마이페이지</a>
                             <a href="#" id="logoutBtn" data-ko="로그아웃" data-en="Logout">로그아웃</a>
                         </div>
                     </div>
@@ -540,6 +540,52 @@
                     <button type="submit" class="btn btn-primary">수정</button>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div id="profileModal" class="profile-modal">
+        <div class="profile-modal-content">
+            <span class="profile-modal-close">&times;</span>
+            <div class="profile-modal-header">
+                <h1>Hamini</h1>
+                <p id="profileModalTitle">마이페이지</p>
+            </div>
+            <div class="profile-modal-body">
+                <div class="profile-info-group">
+                    <label>이름</label>
+                    <input type="text" id="profile-name" readonly>
+                </div>
+                <div class="profile-info-group">
+                    <label>아이디</label>
+                    <input type="text" id="profile-username" readonly disabled>
+                </div>
+                <div class="profile-info-group">
+                    <label>이메일</label>
+                    <input type="text" id="profile-email" readonly>
+                </div>
+                <div class="profile-info-group" id="currentPasswordGroup" style="display: none;">
+                    <label>현재 비밀번호</label>
+                    <input type="password" id="profile-current-password" placeholder="현재 비밀번호 입력">
+                </div>
+                <div class="profile-info-group" id="passwordGroup" style="display: none;">
+                    <label>새 비밀번호</label>
+                    <input type="password" id="profile-password" placeholder="변경할 경우만 입력">
+                </div>
+                <div class="profile-info-group" id="passwordConfirmGroup" style="display: none;">
+                    <label>새 비밀번호 재입력</label>
+                    <input type="password" id="profile-password-confirm" placeholder="비밀번호 확인">
+                </div>
+                <div class="profile-info-group">
+                    <label>가입일</label>
+                    <input type="text" id="profile-created" readonly disabled>
+                </div>
+            </div>
+            <div class="profile-modal-footer">
+                <button class="profile-modal-btn profile-edit-btn" id="editProfileBtn">수정</button>
+                <button class="profile-modal-btn profile-save-btn" id="saveProfileBtn" style="display: none;">저장</button>
+                <button class="profile-modal-btn profile-cancel-btn" id="cancelEditBtn2" style="display: none;">취소</button>
+            </div>
         </div>
     </div>
 
@@ -671,6 +717,7 @@
                 const userDropdown = document.getElementById('userDropdown');
                 const userName = document.getElementById('userName');
                 const writeBtn = document.getElementById('writeBtn');
+                const myPageBtn = document.getElementById('myPageBtn');
 
                 if (isAuthenticated) {
                     if (loginBtn) loginBtn.style.display = 'none';
@@ -679,11 +726,58 @@
                         userName.textContent = data.username;
                     }
                     writeBtn.style.display = 'inline-block';
+                    
+                    // 마이페이지 버튼 클릭 이벤트
+                    if (myPageBtn) {
+                        myPageBtn.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            const profileModal = document.getElementById('profileModal');
+                            
+                            // 사용자 정보 로드
+                            fetch('/api/get-user-info', {
+                                credentials: 'include'
+                            })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.success) {
+                                        document.getElementById('profile-name').value = data.user.name || '';
+                                        document.getElementById('profile-username').value = data.user.username || '';
+                                        document.getElementById('profile-email').value = data.user.email || '';
+                                        document.getElementById('profile-created').value = data.user.created_at || '';
+                                    }
+                                })
+                                .catch(error => console.error('Error loading user info:', error));
+                            
+                            if (profileModal) profileModal.style.display = 'flex';
+                            
+                            // 드롭다운 메뉴 닫기
+                            const userDropdownMenu = document.querySelector('.user-dropdown-menu');
+                            if (userDropdownMenu) {
+                                userDropdownMenu.classList.remove('show');
+                            }
+                        });
+                    }
                 } else {
                     if (loginBtn) loginBtn.style.display = 'inline-block';
                     if (userDropdown) userDropdown.style.display = 'none';
                     writeBtn.style.display = 'none';
                 }
+                
+                // 프로필 모달 닫기 버튼
+                const profileModalClose = document.querySelector('.profile-modal-close');
+                const profileModal = document.getElementById('profileModal');
+                
+                if (profileModalClose && profileModal) {
+                    profileModalClose.addEventListener('click', function() {
+                        profileModal.style.display = 'none';
+                    });
+                }
+                
+                window.addEventListener('click', function(e) {
+                    if (e.target === profileModal) {
+                        profileModal.style.display = 'none';
+                    }
+                });
             } catch (error) {
                 console.error('Auth check failed:', error);
             }

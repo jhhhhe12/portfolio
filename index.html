@@ -15,7 +15,7 @@
     
     <title>Hamini - Developer Portfolio</title>
     
-    <link rel="stylesheet" href="/css/style.css?v=20251212-38">
+    <link rel="stylesheet" href="/css/style.css?v=20251212-37">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
 </head>
 <body>
@@ -51,7 +51,7 @@
                         <li><a href="/board" data-ko="Board" data-en="Board">Board</a></li>
                         <li><a href="#contact" data-ko="Contact" data-en="Contact">Contact</a></li>
                     </ul>
-                    <a href="/login.html" class="login-btn" id="loginBtn">Login</a>
+                    <a href="/login.html" class="login-btn" id="navLoginBtn">Login</a>
                     <div class="user-dropdown" id="userDropdown" style="display: none;">
                         <button class="user-btn">
                             <span class="user-icon">👤</span>
@@ -59,7 +59,7 @@
                             <span class="user-arrow">▼</span>
                         </button>
                         <div class="user-dropdown-menu">
-                            <a href="#" id="profileBtn" data-ko="마이페이지" data-en="My Page">마이페이지</a>
+                            <a href="#" id="myPageBtn" data-ko="마이페이지" data-en="My Page">마이페이지</a>
                             <a href="#" id="logoutBtn" data-ko="로그아웃" data-en="Logout">로그아웃</a>
                         </div>
                     </div>
@@ -742,6 +742,156 @@
 
         // Smooth scroll without hash in URL
         document.addEventListener('DOMContentLoaded', function() {
+            // Check login status
+            const navLoginBtn = document.getElementById('navLoginBtn');
+            const userDropdown = document.getElementById('userDropdown');
+            const userName = document.getElementById('userName');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const myPageBtn = document.getElementById('myPageBtn');
+            const profileModal = document.getElementById('profileModal');
+
+            // User dropdown toggle - 함수로 분리하여 로그인 후에도 작동하도록
+            function setupUserDropdown() {
+                const userBtn = document.querySelector('.user-btn');
+                const userDropdownMenu = document.querySelector('.user-dropdown-menu');
+                
+                if (userBtn && userDropdownMenu) {
+                    // 기존 이벤트 리스너 제거를 위해 복제
+                    const newUserBtn = userBtn.cloneNode(true);
+                    userBtn.parentNode.replaceChild(newUserBtn, userBtn);
+                    
+                    newUserBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log('User button clicked');
+                        userDropdownMenu.classList.toggle('show');
+                    });
+                }
+
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function(e) {
+                    const userDropdownMenu = document.querySelector('.user-dropdown-menu');
+                    if (userDropdown && !userDropdown.contains(e.target) && userDropdownMenu) {
+                        userDropdownMenu.classList.remove('show');
+                    }
+                });
+            }
+
+            // 로그인 상태 확인
+            fetch('/api/check-session', {
+                credentials: 'include'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Login status:', data);
+                    if (data.loggedIn) {
+                        // User is logged in - hide login button, show user dropdown
+                        if (navLoginBtn) navLoginBtn.style.display = 'none';
+                        if (userDropdown) {
+                            userDropdown.style.display = 'inline-block';
+                        }
+                        if (userName) userName.textContent = data.username;
+                        // 드롭다운 설정
+                        setTimeout(setupUserDropdown, 100);
+                    } else {
+                        // User is not logged in - show login button, hide user dropdown
+                        if (navLoginBtn) navLoginBtn.style.display = 'inline-block';
+                        if (userDropdown) userDropdown.style.display = 'none';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error checking login status:', error);
+                    // On error, show login button
+                    if (navLoginBtn) navLoginBtn.style.display = 'inline-block';
+                    if (userDropdown) userDropdown.style.display = 'none';
+                });
+
+            // Logout functionality
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const userDropdownMenu = document.querySelector('.user-dropdown-menu');
+                    if (userDropdownMenu) {
+                        userDropdownMenu.classList.remove('show');
+                    }
+                    fetch('/api/logout', {
+                        method: 'POST',
+                        credentials: 'include'
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            window.location.href = '/';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Logout error:', error);
+                        window.location.href = '/';
+                    });
+                });
+            }
+
+            // My Page modal functionality
+            if (myPageBtn) {
+                myPageBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    if (!profileModal) {
+                        console.error('Profile modal not found');
+                        return;
+                    }
+                    
+                    // 사용자 정보 로드
+                    fetch('/api/get-user-info', {
+                        credentials: 'include'
+                    })
+                        .then(response => {
+                            console.log('Response status:', response.status);
+                            return response.json();
+                        })
+                        .then(data => {
+                            console.log('User info loaded:', data);
+                            if (data.success && data.user) {
+                                const nameField = document.getElementById('profile-name');
+                                const usernameField = document.getElementById('profile-username');
+                                const emailField = document.getElementById('profile-email');
+                                const createdField = document.getElementById('profile-created');
+                                
+                                if (nameField) {
+                                    nameField.value = data.user.name || '';
+                                    console.log('Name set:', data.user.name);
+                                }
+                                if (usernameField) {
+                                    usernameField.value = data.user.username || '';
+                                    console.log('Username set:', data.user.username);
+                                }
+                                if (emailField) {
+                                    emailField.value = data.user.email || '';
+                                    console.log('Email set:', data.user.email);
+                                }
+                                if (createdField) {
+                                    createdField.value = data.user.created_at || '';
+                                    console.log('Created set:', data.user.created_at);
+                                }
+                            } else {
+                                console.error('Failed to load user info:', data);
+                                alert('로그인 정보를 불러올 수 없습니다: ' + (data.message || '알 수 없는 오류'));
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error loading user info:', error);
+                            alert('오류 발생: ' + error.message);
+                        });
+                    
+                    profileModal.style.display = 'flex';
+                    // 드롭다운 메뉴 닫기
+                    const userDropdownMenu = document.querySelector('.user-dropdown-menu');
+                    if (userDropdownMenu) {
+                        userDropdownMenu.classList.remove('show');
+                    }
+                });
+            }
+
             // Hamburger menu toggle
             const hamburger = document.querySelector('.hamburger');
             const nav = document.querySelector('nav');

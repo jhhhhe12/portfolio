@@ -28,102 +28,198 @@
     </header>
 
     <!-- Project Detail Section -->
-    <section class="project-detail">
-        <div class="project-header">
-            <a href="/#projects" class="back-link">← 프로젝트 목록으로</a>
-            <h1>보행영상 AI 프로젝트</h1>
-            <p class="project-period">2024.06 - 2024.08</p>
-            <div class="tech-stack">
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">TensorFlow</span>
-                <span class="tech-tag">OpenCV</span>
-                <span class="tech-tag">FastAPI</span>
-                <span class="tech-tag">Docker</span>
+    <section class="project-detail" style="padding: 2rem 1rem; background: #f8f9fa; overflow-x: hidden;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <a href="/#projects" class="back-link" style="display: inline-block; margin-bottom: 2rem; color: #667eea; text-decoration: none; font-weight: 600; font-size: 0.95rem;">← 프로젝트 목록으로</a>
+            
+            <div class="ai-layout" style="display: grid; grid-template-columns: 350px 1fr; gap: 2rem; align-items: start; margin-top: 100px;">
+                <!-- Left Sidebar -->
+                <div class="ai-sidebar" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <div style="width: 280px; height: 200px; border-radius: 8px; margin: 0 auto 1rem; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+                            🤖
+                        </div>
+                        <h2 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: #2d3748; font-weight: 700;">보행영상 AI 프로젝트</h2>
+                        <p style="color: #718096; font-size: 0.85rem; margin: 0;">2024.06 - 2024.08</p>
+                    </div>
+
+                    <div style="padding: 1rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; text-align: center; margin-bottom: 30px;">
+                        <p style="margin: 0 0 0.5rem 0; color: white; font-size: 0.75rem; opacity: 0.9;">🔗 GitHub Repository</p>
+                        <a href="https://github.com/jhhhhe12/ai-walking-analysis" target="_blank" rel="noopener noreferrer" style="color: white; text-decoration: none; font-size: 0.75rem; font-weight: 600; word-break: break-all; line-height: 1.4;">github.com/jhhhhe12/ai-walking</a>
+                    </div>
+                    
+                    <div style="margin-bottom: 2rem;">
+                        <h3 style="font-size: 0.9rem; color: #2d3748; margin-bottom: 0.8rem; font-weight: 700;">• 주요 기능</h3>
+                        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; color: #4a5568; line-height: 1.7;">
+                            <li style="margin-bottom: 0.4rem;">- 실시간 영상 스트림 처리</li>
+                            <li style="margin-bottom: 0.4rem;">- YOLOv8 기반 사람 객체 감지</li>
+                            <li style="margin-bottom: 0.4rem;">- MediaPipe 골격 추출</li>
+                            <li style="margin-bottom: 0.4rem;">- 보행 패턴 분석 및 이상 탐지</li>
+                            <li style="margin-bottom: 0.4rem;">- 보행 데이터 시각화 대시보드</li>
+                            <li style="margin-bottom: 0;">- 분석 결과 자동 저장 및 리포트</li>
+                        </ul>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <h3 style="font-size: 0.9rem; color: #2d3748; margin-bottom: 0.8rem; font-weight: 700;">• 기술 스택</h3>
+                        <div style="margin-bottom: 1.2rem;">
+                            <p style="font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">⚙️ 개발 환경</p>
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">Python</span>
+                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">TensorFlow</span>
+                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">OpenCV</span>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 1.2rem;">
+                            <p style="font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">📚 프레임워크 & 라이브러리</p>
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">FastAPI</span>
+                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">YOLOv8</span>
+                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">MediaPipe</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p style="font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">🐳 배포 & 도구</p>
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">Docker</span>
+                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">TensorRT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Content -->
+                <div style="background: white; border-radius: 12px; padding: 2.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+                    <section style="margin-bottom: 2.5rem;">
+                        <h2 style="font-size: 1.3rem; color: #2d3748; margin-bottom: 1rem; font-weight: 700; border-bottom: 2px solid #667eea; padding-bottom: 0.5rem;">• 프로젝트 개요</h2>
+                        <p style="line-height: 1.8; color: #4a5568; font-size: 0.95rem; margin: 0;">
+                            딥러닝 기반 보행 패턴 분석 시스템으로, 영상 데이터에서 사람의 보행 자세를 실시간으로 분석하고 이상 패턴을 자동으로 감지하는 AI 모델을 개발했습니다.<br>
+                            의료 및 재활 분야에서 환자의 보행 상태를 모니터링하는 데 활용될 수 있으며, YOLOv8과 MediaPipe를 활용한 정확한 자세 추정과 실시간 분석이 가능합니다.
+                        </p>
+                    </section>
+
+                    <section style="margin-bottom: 2.5rem;">
+                        <h2 style="font-size: 1.3rem; color: #2d3748; margin-bottom: 1rem; font-weight: 700; border-bottom: 2px solid #667eea; padding-bottom: 0.5rem;">• 시스템 아키텍처</h2>
+                        <div style="background: #f7fafc; padding: 2rem; border-radius: 8px; text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">📊</div>
+                            <p style="font-size: 1.1rem; color: #2d3748; font-weight: 600; margin-bottom: 1rem;">AI 파이프라인 다이어그램</p>
+                            <p style="color: #4a5568; font-size: 0.9rem; line-height: 1.8;">
+                                Video Input → Object Detection (YOLOv8) → Pose Estimation (MediaPipe) → Pattern Analysis → Result Output
+                            </p>
+                        </div>
+                    </section>
+
+                    <section style="margin-bottom: 2.5rem;">
+                        <h2 style="font-size: 1.3rem; color: #2d3748; margin-bottom: 1rem; font-weight: 700; border-bottom: 2px solid #667eea; padding-bottom: 0.5rem;">• 기술적 도전</h2>
+                        <div style="display: grid; gap: 0.8rem;">
+                            <div style="background: #f7fafc; padding: 1.2rem; border-radius: 8px; border-left: 3px solid #667eea;">
+                                <h4 style="color: #2d3748; margin: 0 0 0.4rem 0; font-size: 0.95rem; font-weight: 600;">⚡ 실시간 처리 성능 최적화</h4>
+                                <p style="color: #4a5568; font-size: 0.85rem; line-height: 1.6; margin: 0;">고해상도 영상 처리 시 프레임 드롭 문제를 TensorRT 모델 최적화로 해결하여 추론 속도를 3배 향상시켰습니다.</p>
+                            </div>
+                            <div style="background: #f7fafc; padding: 1.2rem; border-radius: 8px; border-left: 3px solid #f6ad55;">
+                                <h4 style="color: #2d3748; margin: 0 0 0.4rem 0; font-size: 0.95rem; font-weight: 600;">🎯 다양한 환경에서의 정확도 개선</h4>
+                                <p style="color: #4a5568; font-size: 0.85rem; line-height: 1.6; margin: 0;">조명, 각도, 배경 변화에 따른 감지 정확도 편차를 Data Augmentation과 Transfer Learning 기법으로 mAP 88%까지 향상시켰습니다.</p>
+                            </div>
+                            <div style="background: #f7fafc; padding: 1.2rem; border-radius: 8px; border-left: 3px solid #48bb78;">
+                                <h4 style="color: #2d3748; margin: 0 0 0.4rem 0; font-size: 0.95rem; font-weight: 600;">🦴 골격 추출 안정화</h4>
+                                <p style="color: #4a5568; font-size: 0.85rem; line-height: 1.6; margin: 0;">MediaPipe를 활용한 33개 신체 랜드마크 추출 시 흔들림과 노이즈를 칼만 필터로 안정화하여 분석 정확도를 높였습니다.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2 style="font-size: 1.3rem; color: #2d3748; margin-bottom: 1rem; font-weight: 700; border-bottom: 2px solid #667eea; padding-bottom: 0.5rem;">• 성과 및 결과</h2>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+                            <div style="text-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 1.5rem 1rem; border-radius: 10px; color: white;">
+                                <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.3rem;">88%</div>
+                                <div style="font-size: 0.8rem; opacity: 0.95;">감지 정확도 (mAP)</div>
+                            </div>
+                            <div style="text-align: center; background: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%); padding: 1.5rem 1rem; border-radius: 10px; color: white;">
+                                <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.3rem;">30 FPS</div>
+                                <div style="font-size: 0.8rem; opacity: 0.95;">실시간 처리 속도</div>
+                            </div>
+                            <div style="text-align: center; background: linear-gradient(135deg, #48bb78 0%, #38a169 100%); padding: 1.5rem 1rem; border-radius: 10px; color: white;">
+                                <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.3rem;">1000+</div>
+                                <div style="font-size: 0.8rem; opacity: 0.95;">학습 데이터셋</div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
             </div>
         </div>
-
-        <div class="project-content">
-            <section class="project-section">
-                <h2>프로젝트 개요</h2>
-                <p>
-                    딥러닝 기반 보행 패턴 분석 시스템으로, 영상 데이터에서 사람의 보행 자세를 
-                    실시간으로 분석하고 이상 패턴을 자동으로 감지하는 AI 모델을 개발했습니다.
-                    의료 및 재활 분야에서 환자의 보행 상태를 모니터링하는 데 활용될 수 있습니다.
-                </p>
-                <div class="github-section" style="margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; text-align: center;">
-                    <h3 style="color: white; margin-bottom: 1rem;">📁 프로젝트 파일</h3>
-                    <p style="color: rgba(255,255,255,0.9); margin-bottom: 1.5rem;">GitHub에서 전체 소스 코드를 확인하실 수 있습니다</p>
-                    <a href="https://github.com/jhhhhe12/ai-walking-analysis" target="_blank" rel="noopener noreferrer" style="display: inline-block; padding: 12px 30px; background: white; color: #667eea; text-decoration: none; border-radius: 8px; font-weight: 600; transition: transform 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.2);" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-                        <span style="font-size: 1.2rem;">⭐</span> GitHub 저장소 보기
-                    </a>
-                </div>
-            </section>
-
-            <section class="project-section">
-                <h2>주요 기능</h2>
-                <ul class="feature-list">
-                    <li>🎥 실시간 영상 스트림 처리</li>
-                    <li>🤖 YOLOv8 기반 사람 객체 감지</li>
-                    <li>🦴 MediaPipe를 활용한 골격 추출</li>
-                    <li>📈 보행 패턴 분석 및 이상 탐지</li>
-                    <li>📊 보행 데이터 시각화 대시보드</li>
-                    <li>💾 분석 결과 자동 저장 및 리포트 생성</li>
-                </ul>
-            </section>
-
-            <section class="project-section">
-                <h2>시스템 아키텍처</h2>
-                <div class="diagram-container">
-                    <div class="diagram-placeholder">
-                        <p>📊 AI 파이프라인 다이어그램</p>
-                        <p class="diagram-desc">Video Input → Object Detection → Pose Estimation → Analysis → Output</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="project-section">
-                <h2>모델 구조</h2>
-                <div class="diagram-container">
-                    <div class="diagram-placeholder">
-                        <p>🧠 AI 모델 아키텍처</p>
-                        <p class="diagram-desc">YOLOv8 + MediaPipe + Custom Classification Model</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="project-section">
-                <h2>기술적 도전과 해결</h2>
-                <div class="challenge-box">
-                    <h3>🎯 실시간 처리 성능 최적화</h3>
-                    <p><strong>문제:</strong> 고해상도 영상 처리 시 프레임 드롭 발생</p>
-                    <p><strong>해결:</strong> TensorRT를 활용한 모델 최적화로 추론 속도 3배 향상</p>
-                </div>
-                <div class="challenge-box">
-                    <h3>🎯 다양한 환경에서의 정확도</h3>
-                    <p><strong>문제:</strong> 조명, 각도, 배경에 따라 감지 정확도 편차 발생</p>
-                    <p><strong>해결:</strong> Data Augmentation과 Transfer Learning으로 mAP 88% 달성</p>
-                </div>
-            </section>
-
-            <section class="project-section">
-                <h2>성과 및 결과</h2>
-                <div class="result-stats">
-                    <div class="stat-card">
-                        <div class="stat-number">88%</div>
-                        <div class="stat-label">감지 정확도</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">30 FPS</div>
-                        <div class="stat-label">실시간 처리 속도</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">1000+</div>
-                        <div class="stat-label">학습 데이터셋</div>
-                    </div>
-                </div>
-            </section>
-        </div>
     </section>
+    
+    <style>
+        @media (max-width: 1024px) {
+            .lms-layout, .ai-layout, .aws-layout {
+                grid-template-columns: 1fr !important;
+            }
+            .project-detail > div > div > div:first-child {
+                position: relative !important;
+                top: 0 !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .project-detail {
+                padding: 1rem 0.5rem !important;
+            }
+            .lms-layout, .ai-layout, .aws-layout {
+                margin-top: 50px !important;
+                gap: 1.5rem !important;
+            }
+            .lms-sidebar, .ai-sidebar, .aws-sidebar {
+                padding: 1.5rem !important;
+            }
+            .slideshow-container {
+                width: 100% !important;
+                max-width: 280px !important;
+            }
+            .project-detail h2 {
+                font-size: 1.1rem !important;
+            }
+            .project-detail h3 {
+                font-size: 0.85rem !important;
+            }
+            .project-detail p, .project-detail li {
+                font-size: 0.8rem !important;
+            }
+            section > div:last-child {
+                padding: 2rem 1.5rem !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .project-detail {
+                padding: 1rem 0.25rem !important;
+            }
+            .lms-layout, .ai-layout, .aws-layout {
+                margin-top: 30px !important;
+                gap: 1rem !important;
+            }
+            .lms-sidebar, .ai-sidebar, .aws-sidebar {
+                padding: 1rem !important;
+            }
+            section > div:last-child {
+                padding: 1.5rem 1rem !important;
+            }
+            .project-detail h2 {
+                font-size: 1rem !important;
+                padding-bottom: 0.3rem !important;
+            }
+            .project-detail h4 {
+                font-size: 0.85rem !important;
+            }
+            /* 성과 카드 1열로 변경 */
+            section:last-child > div {
+                grid-template-columns: 1fr !important;
+                gap: 0.8rem !important;
+            }
+            section:last-child > div > div {
+                padding: 1rem !important;
+            }
+        }
+    </style>
 
     <!-- Footer -->
     <footer>

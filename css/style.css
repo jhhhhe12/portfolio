@@ -667,7 +667,7 @@ nav a::before {
 
 /* Section Common Styles */
 section {
-    padding: 5rem 0;
+    padding: 2rem;
     max-width: 100%;
     margin: 0;
     width: 100%;
@@ -1815,13 +1815,14 @@ footer p {
     nav li {
         width: 100%;
         border-bottom: none;
+        margin: 0;
     }
 
     nav a {
         display: block;
         padding: 1.2rem 1.5rem;
         font-size: 1rem;
-        width: 100%;
+        width: 90%;
         text-align: left;
         border-bottom: 1px solid #2a2a2a;
         color: #ffffff;
@@ -1835,17 +1836,49 @@ footer p {
         display: none;
     }
 
-    nav li:has(.login-btn) {
+    /* 모바일 메뉴에서 로그인 버튼을 맨 위로 */
+    nav ul li:first-child {
         order: -10 !important;
     }
 
-    .login-btn {
-        position: relative !important;
+    nav ul li:nth-child(2) {
+        order: -9 !important;
+    }
+
+    /* 모바일 메뉴 내 로그인 버튼 스타일 */
+    nav .login-btn {
+        position: static !important;
         right: auto !important;
         top: auto !important;
         transform: none !important;
         margin: 0 !important;
         display: block !important;
+        width: 90% !important;
+        text-align: left !important;
+        padding: 1.2rem 1.5rem !important;
+        border-radius: 0 !important;
+        border: none !important;
+        background: #1a1a1a !important;
+        box-shadow: none !important;
+        color: #3b82f6 !important;
+        font-weight: 600 !important;
+    }
+
+    nav .login-btn:hover {
+        background: #252525 !important;
+        box-shadow: none !important;
+        transform: none !important;
+    }
+
+    /* 모바일 메뉴 내 사용자 드롭다운 */
+    nav .user-dropdown {
+        width: 90%;
+        display: block !important;
+        position: static !important;
+    }
+
+    nav .user-btn {
+        position: static !important;
         width: 100% !important;
         text-align: left !important;
         padding: 1.2rem 1.5rem !important;
@@ -1853,15 +1886,42 @@ footer p {
         border: none !important;
         border-bottom: 1px solid #2a2a2a !important;
         background: #1a1a1a !important;
-        box-shadow: none !important;
-        color: #3b82f6 !important;
-        font-weight: 600 !important;
+        justify-content: flex-start !important;
+        min-height: auto !important;
     }
 
-    .login-btn:hover {
+    nav .user-btn:hover {
+        background: #252525 !important;
+    }
+
+    nav .user-dropdown-menu {
+        position: static !important;
+        width: 100% !important;
         background: #252525 !important;
         box-shadow: none !important;
+        border: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
         transform: none !important;
+        display: none;
+    }
+
+    nav .user-dropdown-menu.show {
+        display: block !important;
+    }
+
+    nav .user-dropdown-menu a {
+        padding: 1rem 2rem !important;
+        color: rgba(255, 255, 255, 0.8) !important;
+        display: block !important;
+        border-bottom: 1px solid #2a2a2a !important;
+    }
+
+    nav .user-dropdown-menu a:hover {
+        background: #1a1a1a !important;
+        color: #ffffff !important;
     }
 
     /* Section Common Mobile */

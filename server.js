@@ -171,6 +171,60 @@ app.get('/check-auth', (req, res) => {
     }
 });
 
+// 세션 확인 API
+app.get('/api/check-session', (req, res) => {
+    if (req.session.userId && req.session.username) {
+        res.json({
+            loggedIn: true,
+            username: req.session.username,
+            userId: req.session.userId
+        });
+    } else {
+        res.json({ loggedIn: false });
+    }
+});
+
+// 사용자 정보 조회 API
+app.get('/api/get-user-info', (req, res) => {
+    console.log('Get user info - Session:', req.session);
+    if (!req.session.userId) {
+        return res.json({ success: false, message: '로그인이 필요합니다.' });
+    }
+
+    db.query('SELECT id, username, email, full_name as name, DATE_FORMAT(created_at, "%Y-%m-%d") as created_at FROM user WHERE id = ?',
+        [req.session.userId],
+        (err, results) => {
+            if (err) {
+                console.error('DB error:', err);
+                return res.json({ success: false, message: '데이터베이스 오류' });
+            }
+
+            if (results.length === 0) {
+                return res.json({ success: false, message: '사용자를 찾을 수 없습니다.' });
+            }
+
+            const user = results[0];
+            console.log('User data loaded:', user);
+            res.json({
+                success: true,
+                user: {
+                    id: user.id,
+                    username: user.username,
+                    name: user.name,
+                    email: user.email,
+                    created_at: user.created_at
+                }
+            });
+        }
+    );
+});
+
+// 로그아웃 API
+app.post('/api/logout', (req, res) => {
+    req.session.destroy();
+    res.json({ success: true });
+});
+
 // 회원정보 조회
 app.get('/api/user/profile', (req, res) => {
     if (!req.session.userId) {
