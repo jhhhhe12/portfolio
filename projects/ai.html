@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>보행영상 AI 프로젝트 - Hamini Portfolio</title>
+    <title>주차장 모니터링 AI 프로젝트 - Hamini Portfolio</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/project-detail.css">
 </head>
@@ -28,17 +28,33 @@
     </header>
 
     <!-- Project Detail Section -->
-    <section class="project-detail" style="padding: 9rem 1rem; background: #f8f9fa; overflow-x: hidden;">
+    <section class="project-detail" style="padding: 4rem 1rem; background: #f8f9fa; overflow-x: hidden; position: relative;">
+        <!-- 프로젝트 네비게이션 버튼 -->
+        <a href="/projects/lms.html" class="project-nav-btn project-nav-prev" style="position: fixed; left: 20px; top: 50%; transform: translateY(-50%); background: rgba(102, 126, 234, 0.9); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 24px; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: all 0.3s ease;" onmouseover="this.style.background='rgba(102, 126, 234, 1)'; this.style.transform='translateY(-50%) scale(1.1)';" onmouseout="this.style.background='rgba(102, 126, 234, 0.9)'; this.style.transform='translateY(-50%) scale(1)';">
+            ‹
+        </a>
+        <a href="/projects/aws.html" class="project-nav-btn project-nav-next" style="position: fixed; right: 20px; top: 50%; transform: translateY(-50%); background: rgba(102, 126, 234, 0.9); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 24px; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: all 0.3s ease;" onmouseover="this.style.background='rgba(102, 126, 234, 1)'; this.style.transform='translateY(-50%) scale(1.1)';" onmouseout="this.style.background='rgba(102, 126, 234, 0.9)'; this.style.transform='translateY(-50%) scale(1)';">
+            ›
+        </a>
+        
         <div style="max-width: 1200px; margin: 0 auto;">
+            <a href="/#projects" class="back-link" style="display: inline-block; margin-bottom: 2rem; color: #667eea; text-decoration: none; font-weight: 600; font-size: 0.95rem;">← 프로젝트 목록으로</a>
             
             <div class="ai-layout" style="display: grid; grid-template-columns: 350px 1fr; gap: 2rem; align-items: start; margin-top: 100px;">
                 <!-- Left Sidebar -->
                 <div class="ai-sidebar" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
                     <div style="text-align: center; margin-bottom: 2rem;">
-                        <div style="width: 280px; height: 200px; border-radius: 8px; margin: 0 auto 1rem; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); background: #f5f5f5;">
-                            <img src="/images/ai-walking.jpg" alt="보행영상 AI 프로젝트" style="width: 100%; height: 100%; ">
+                        <div class="slideshow-container" style="width: 280px; height: 200px; border-radius: 8px; margin: 0 auto 1rem; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); position: relative;">
+                            <div class="slides-wrapper" style="display: flex; transition: transform 0.5s ease-in-out; width: 100%; height: 100%;">
+                                <div class="slide" style="min-width: 100%; height: 100%;">
+                                    <img src="/images/ai-walking.jpg" alt="주차장 모니터링 AI 프로젝트" style="width: 100%; height: 100%; ">
+                                </div>
+                                <div class="slide" style="min-width: 100%; height: 100%;">
+                                    <img src="/images/ai-parking.jpg" alt="주차장 CCTV" style="width: 100%; height: 100%; ">
+                                </div>
+                            </div>
                         </div>
-                        <h2 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: #2d3748; font-weight: 700;">보행영상 AI 프로젝트</h2>
+                        <h2 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: #2d3748; font-weight: 700;">주차장 모니터링 AI 프로젝트</h2>
                         <p style="color: #718096; font-size: 0.85rem; margin: 0;">2024.06 - 2024.08</p>
                     </div>
 
@@ -65,7 +81,6 @@
                             <p style="font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">⚙️ 개발 환경</p>
                             <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
                                 <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">Python</span>
-                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">TensorFlow</span>
                                 <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">OpenCV</span>
                             </div>
                         </div>
@@ -74,14 +89,13 @@
                             <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
                                 <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">FastAPI</span>
                                 <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">YOLOv8</span>
-                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">MediaPipe</span>
+                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">Miniconda</span>
                             </div>
                         </div>
                         <div>
-                            <p style="font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">🐳 배포 & 도구</p>
+                            <p style="font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">🐳 배포 </p>
                             <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
                                 <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">Docker</span>
-                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">TensorRT</span>
                             </div>
                         </div>
                     </div>
@@ -92,19 +106,27 @@
                     <section style="margin-bottom: 2.5rem;">
                         <h2 style="font-size: 1.3rem; color: #2d3748; margin-bottom: 1rem; font-weight: 700; border-bottom: 2px solid #667eea; padding-bottom: 0.5rem;">• 프로젝트 개요</h2>
                         <p style="line-height: 1.8; color: #4a5568; font-size: 0.95rem; margin: 0;">
-                            딥러닝 기반 보행 패턴 분석 시스템으로, 영상 데이터에서 사람의 보행 자세를 실시간으로 분석하고 이상 패턴을 자동으로 감지하는 AI 모델을 개발했습니다.<br>
-                            의료 및 재활 분야에서 환자의 보행 상태를 모니터링하는 데 활용될 수 있으며, YOLOv8과 MediaPipe를 활용한 정확한 자세 추정과 실시간 분석이 가능합니다.
+                            주차장의 주차 공간 이용 현황을 한눈에 파악할 수 있도록, AI가 차량을 자동으로 인식하고 슬롯별 점유 상태를 계산합니다. 그 결과를 전체 주차장 현황과 함께 색상 박스로 직관적으로 표시하여 실시간 모니터링이 가능하도록 구현했습니다.
                         </p>
                     </section>
 
                     <section style="margin-bottom: 2.5rem;">
                         <h2 style="font-size: 1.3rem; color: #2d3748; margin-bottom: 1rem; font-weight: 700; border-bottom: 2px solid #667eea; padding-bottom: 0.5rem;">• 시스템 아키텍처</h2>
-                        <div style="background: #f7fafc; padding: 2rem; border-radius: 8px; text-align: center;">
-                            <div style="font-size: 3rem; margin-bottom: 1rem;">📊</div>
-                            <p style="font-size: 1.1rem; color: #2d3748; font-weight: 600; margin-bottom: 1rem;">AI 파이프라인 다이어그램</p>
-                            <p style="color: #4a5568; font-size: 0.9rem; line-height: 1.8;">
-                                Video Input → Object Detection (YOLOv8) → Pose Estimation (MediaPipe) → Pattern Analysis → Result Output
-                            </p>
+                        
+                        <!-- 시스템 플로우차트 -->
+                        <div style="margin-bottom: 2rem;">
+                            <h3 style="font-size: 1.1rem; color: #2d3748; margin-bottom: 0.8rem; font-weight: 600;">시스템 플로우차트</h3>
+                            <div style="background: #f7fafc; padding: 1.5rem; border-radius: 8px; cursor: zoom-in;" onclick="openImageModal('/images/ai-system-flowchart.png')">
+                                <img src="/images/ai-system-flowchart.png" alt="시스템 플로우차트" style="width: 100%; height: auto; border-radius: 6px;">
+                            </div>
+                        </div>
+
+                        <!-- 개발환경 플로우차트 -->
+                        <div style="margin-bottom: 2rem;">
+                            <h3 style="font-size: 1.1rem; color: #2d3748; margin-bottom: 0.8rem; font-weight: 600;">개발환경 플로우차트</h3>
+                            <div style="background: #f7fafc; padding: 1.5rem; border-radius: 8px; cursor: zoom-in;" onclick="openImageModal('/images/ai-env-flowchart.png')">
+                                <img src="/images/ai-env-flowchart.png" alt="개발환경 플로우차트" style="width: 100%; height: auto; border-radius: 6px;">
+                            </div>
                         </div>
                     </section>
 
@@ -220,6 +242,12 @@
         }
     </style>
 
+    <!-- Image Modal -->
+    <div id="imageModal" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); cursor: zoom-out;" onclick="closeImageModal()">
+        <span style="position: absolute; top: 20px; right: 40px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer;" onclick="closeImageModal()">&times;</span>
+        <img id="modalImage" style="margin: auto; display: block; max-width: 95%; max-height: 95%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    </div>
+
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 Hamini. All rights reserved.</p>
@@ -227,5 +255,59 @@
     </footer>
 
     <script src="/js/main.js"></script>
+    <script>
+        // 캐러셀 슬라이드 기능
+        let slideIndex = 0;
+        const slidesWrapper = document.querySelector('.slides-wrapper');
+        const totalSlides = document.querySelectorAll('.slide').length;
+        
+        if (slidesWrapper && totalSlides > 0) {
+            showSlide(slideIndex);
+            
+            // 자동 슬라이드 (3초마다)
+            setInterval(function() {
+                plusSlides(1);
+            }, 3000);
+        }
+        
+        function plusSlides(n) {
+            slideIndex += n;
+            if (slideIndex >= totalSlides) {
+                slideIndex = 0;
+            }
+            if (slideIndex < 0) {
+                slideIndex = totalSlides - 1;
+            }
+            showSlide(slideIndex);
+        }
+        
+        function showSlide(n) {
+            if (slidesWrapper) {
+                slidesWrapper.style.transform = `translateX(-${n * 100}%)`;
+            }
+        }
+        
+        // 이미지 모달 열기
+        function openImageModal(src) {
+            var modal = document.getElementById('imageModal');
+            var modalImg = document.getElementById('modalImage');
+            modal.style.display = 'block';
+            modalImg.src = src;
+            document.body.style.overflow = 'hidden';
+        }
+
+        // 이미지 모달 닫기
+        function closeImageModal() {
+            document.getElementById('imageModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // ESC 키로 모달 닫기
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeImageModal();
+            }
+        });
+    </script>
 </body>
 </html>
