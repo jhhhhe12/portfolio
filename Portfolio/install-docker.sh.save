@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# INFO: https://docs.docker.com/engine/install/ubuntu/
+
+set -euf -o pipefail
+
+DOCKER_USER=ubuntu
+
+# Install dependencies
+sudo apt-get update && sudo apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+
+# Add Docker’s official GPG key
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg \
+    | sudo gpg --yes --dearmor -o /usr/shar
+# Use Docker without rosudo usermod -aG docker $DOCKER_USER
+
+echo "Docker installation completed!"

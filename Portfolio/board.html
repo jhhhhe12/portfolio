@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판 - Hamini</title>
+    <link rel="stylesheet" href="/css/style.css?v=20251212-04">
+    <style>
+        body {
+            background: #0a0a0a;
+            color: #ffffff;
+        }
+
+        .board-container {
+            max-width: 1200px;
+            margin: 120px auto 50px;
+            padding: 2rem;
+        }
+
+        .board-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .board-header h1 {
+            font-size: 2rem;
+            color: #ffffff;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .board-header h1::before {
+            content: '📝';
+            -webkit-text-fill-color: initial;
+            background: none;
+            font-size: 2rem;
+        }
+
+        .write-btn {
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .write-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.5);
+        }
+
+        .post-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #1a1a1a;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .post-table thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .post-table th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .post-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #2a2a2a;
+            color: #e0e0e0;
+        }
+
+        .post-table tbody tr:hover {
+            background: #252525;
+            cursor: pointer;
+        }
+
+        .post-title {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .post-title:hover {
+            color: #667eea;
+        }
+
+        .no-posts {
+            text-align: center;
+            color: #999;
+            padding: 3rem !important;
+        }
+
+        .post-meta {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid #333;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 1rem;
+            color: #ffffff;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #e0e0e0;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #333;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #0a0a0a;
+            color: #ffffff;
+        }
+
+        .form-group textarea {
+            min-height: 200px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.5);
+        }
+
+        .btn-secondary {
+            background: #333;
+            color: #e0e0e0;
+        }
+
+        .btn-secondary:hover {
+            background: #444;
+        }
+
+        .btn-warning {
+            background: #ffa500;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-warning:hover {
+            background: #ff8c00;
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+        }
+
+        .post-actions {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #333;
+        }
+
+        .post-detail {
+            padding: 2rem 0;
+        }
+
+        .post-detail-header {
+            border-bottom: 2px solid #333;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .post-detail-title {
+            font-size: 1.8rem;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .post-detail-content {
+            line-height: 1.8;
+            color: #e0e0e0;
+            white-space: pre-wrap;
+            min-height: 200px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .board-container {
+                margin-top: 100px;
+                padding: 1rem;
+            }
+
+            .board-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+
+            .board-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .write-btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .post-table {
+                font-size: 0.9rem;
+            }
+
+            .post-table th,
+            .post-table td {
+                padding: 0.7rem 0.5rem;
+            }
+
+            .post-table th:nth-child(1),
+            .post-table td:nth-child(1) {
+                display: none;
+            }
+
+            .modal-content {
+                padding: 1.5rem;
+                width: 95%;
+            }
+
+            .modal-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .btn-group {
+                width: 100%;
+            }
+
+            .btn {
+                flex: 1;
+            }
+
+            .post-detail-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .board-container {
+                margin-top: 90px;
+            }
+
+            .board-header h1 {
+                font-size: 1.3rem;
+            }
+
+            .post-table {
+                font-size: 0.85rem;
+            }
+
+            .post-table th:nth-child(5),
+            .post-table td:nth-child(5) {
+                display: none;
+            }
+
+            .write-btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+            .post-card-image {
+                height: 150px;
+                font-size: 2rem;
+            }
+
+            .post-card-title {
+                font-size: 1.1rem;
+            }
+
+            .modal-content {
+                padding: 1.5rem;
+                width: 95%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .board-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .write-btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .post-card-content {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="header-top">
+                <div class="logo"><a href="/" style="text-decoration: none; color: inherit;">Hamini</a></div>
+                <div class="language-switcher">
+                    <button class="lang-current">
+                        <span class="lang-icon">🌐</span>
+                        <span class="lang-text">KOR</span>
+                        <span class="lang-arrow">▼</span>
+                    </button>
+                    <div class="lang-dropdown">
+                        <button class="lang-option active" data-lang="ko">한국어</button>
+                        <button class="lang-option" data-lang="en">English</button>
+                    </div>
+                </div>
+            </div>
+            <div class="header-bottom">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="/#home" data-ko="Home" data-en="Home">Home</a></li>
+                        <li><a href="/#about" data-ko="Profile" data-en="Profile">Profile</a></li>
+                        <li><a href="/#projects" data-ko="Projects" data-en="Projects">Projects</a></li>
+                        <li><a href="/board" data-ko="Board" data-en="Board">Board</a></li>
+                        <li><a href="/#contact" data-ko="Contact" data-en="Contact">Contact</a></li>
+                    </ul>
+                    <a href="/login.html" class="login-btn" id="navLoginBtn">Login</a>
+                    <div class="user-dropdown" id="userDropdown" style="display: none;">
+                        <button class="user-btn">
+                            <span class="user-icon">👤</span>
+                            <span class="user-name" id="userName">User</span>
+                            <span class="user-arrow">▼</span>
+                        </button>
+                        <div class="user-dropdown-menu">
+                            <a href="#" id="myPageBtn" data-ko="마이페이지" data-en="My Page">마이페이지</a>
+                            <a href="#" id="logoutBtn" data-ko="로그아웃" data-en="Logout">로그아웃</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="board-container">
+        <div class="board-header">
+            <h1>게시판</h1>
+            <button class="write-btn" id="writeBtn" style="display: none;">글쓰기</button>
+        </div>
+
+        <table class="post-table">
+            <thead>
+                <tr>
+                    <th style="width: 10%;">번호</th>
+                    <th style="width: 50%;">제목</th>
+                    <th style="width: 15%;">작성자</th>
+                    <th style="width: 15%;">작성일</th>
+                    <th style="width: 10%;">조회수</th>
+                </tr>
+            </thead>
+            <tbody id="postList">
+                <tr>
+                    <td colspan="5" class="no-posts">게시글이 없습니다.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 글쓰기 모달 -->
+    <div class="modal" id="writeModal">
+        <div class="modal-content">
+            <h2>글쓰기</h2>
+            <form id="writeForm">
+                <div class="form-group">
+                    <label for="title">제목</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="content">내용</label>
+                    <textarea id="content" name="content" required></textarea>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-secondary" id="cancelBtn">취소</button>
+                    <button type="submit" class="btn btn-primary">작성</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 글 상세보기 모달 -->
+    <div class="modal" id="detailModal">
+        <div class="modal-content">
+            <div class="post-detail">
+                <div class="post-detail-header">
+                    <h2 class="post-detail-title" id="detailTitle"></h2>
+                    <div class="post-meta">
+                        <span id="detailAuthor"></span> | 
+                        <span id="detailDate"></span> | 
+                        조회수 <span id="detailViews"></span>
+                    </div>
+                </div>
+                <div class="post-detail-content" id="detailContent"></div>
+                <div class="post-actions" id="postActions" style="margin-top: 2rem; display: none;">
+                    <button class="btn btn-warning" id="editBtn" style="margin-right: 10px;">수정</button>
+                    <button class="btn btn-danger" id="deleteBtn">삭제</button>
+                </div>
+                <a href="#" class="back-link" id="closeDetailBtn">← 목록으로</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 수정 모달 -->
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <h2>게시글 수정</h2>
+            <form id="editForm">
+                <input type="hidden" id="editPostId">
+                <div class="form-group">
+                    <label for="editTitle">제목</label>
+                    <input type="text" id="editTitle" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="editContent">내용</label>
+                    <textarea id="editContent" class="form-control" rows="10" required></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelEditBtn">취소</button>
+                    <button type="submit" class="btn btn-primary">수정</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div id="profileModal" class="profile-modal">
+        <div class="profile-modal-content">
+            <span class="profile-modal-close">&times;</span>
+            <div class="profile-modal-header">
+                <h1>Hamini</h1>
+                <p id="profileModalTitle">마이페이지</p>
+            </div>
+            <div class="profile-modal-body">
+                <div class="profile-info-group">
+                    <label>이름</label>
+                    <input type="text" id="profile-name" readonly>
+                </div>
+                <div class="profile-info-group">
+                    <label>아이디</label>
+                    <input type="text" id="profile-username" readonly disabled>
+                </div>
+                <div class="profile-info-group">
+                    <label>이메일</label>
+                    <input type="text" id="profile-email" readonly>
+                </div>
+                <div class="profile-info-group" id="currentPasswordGroup" style="display: none;">
+                    <label>현재 비밀번호</label>
+                    <input type="password" id="profile-current-password" placeholder="현재 비밀번호 입력">
+                </div>
+                <div class="profile-info-group" id="passwordGroup" style="display: none;">
+                    <label>새 비밀번호</label>
+                    <input type="password" id="profile-password" placeholder="변경할 경우만 입력">
+                </div>
+                <div class="profile-info-group" id="passwordConfirmGroup" style="display: none;">
+                    <label>새 비밀번호 재입력</label>
+                    <input type="password" id="profile-password-confirm" placeholder="비밀번호 확인">
+                </div>
+                <div class="profile-info-group">
+                    <label>가입일</label>
+                    <input type="text" id="profile-created" readonly disabled>
+                </div>
+            </div>
+            <div class="profile-modal-footer">
+                <button class="profile-modal-btn profile-edit-btn" id="editProfileBtn">수정</button>
+                <button class="profile-modal-btn profile-save-btn" id="saveProfileBtn" style="display: none;">저장</button>
+                <button class="profile-modal-btn profile-cancel-btn" id="cancelEditBtn2" style="display: none;">취소</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Hamburger menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const nav = document.querySelector('nav');
+            const navLinks = document.querySelectorAll('nav a');
+
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    hamburger.classList.toggle('active');
+                    nav.classList.toggle('active');
+                });
+
+                // Close menu when clicking on a link
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        hamburger.classList.remove('active');
+                        nav.classList.remove('active');
+                    });
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+                        hamburger.classList.remove('active');
+                        nav.classList.remove('active');
+                    }
+                });
+            }
+        });
+
+        // Language Switcher
+        let currentLang = 'ko';
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            
+            // Update all elements with data-ko and data-en attributes
+            document.querySelectorAll('[data-ko][data-en]').forEach(element => {
+                const koreanText = element.getAttribute('data-ko');
+                const englishText = element.getAttribute('data-en');
+                
+                if (lang === 'en') {
+                    element.textContent = englishText;
+                } else {
+                    element.textContent = koreanText;
+                }
+            });
+            
+            // Update language button text
+            const langText = document.querySelector('.lang-text');
+            if (langText) {
+                langText.textContent = lang === 'ko' ? 'KOR' : 'ENG';
+            }
+            
+            // Update language options active state
+            document.querySelectorAll('.lang-option').forEach(option => {
+                if (option.getAttribute('data-lang') === lang) {
+                    option.classList.add('active');
+                } else {
+                    option.classList.remove('active');
+                }
+            });
+            
+            // Store preference
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        // Initialize language switcher
+        document.addEventListener('DOMContentLoaded', () => {
+            const langOptions = document.querySelectorAll('.lang-option');
+            const langSwitcher = document.querySelector('.language-switcher');
+            const langCurrent = document.querySelector('.lang-current');
+            
+            // Click on language options
+            langOptions.forEach(option => {
+                option.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const lang = option.getAttribute('data-lang');
+                    switchLanguage(lang);
+                    
+                    // Close dropdown on mobile
+                    if (window.innerWidth <= 768) {
+                        langSwitcher.classList.remove('active');
+                    }
+                });
+            });
+            
+            // Toggle dropdown on current button click (for mobile)
+            if (langCurrent) {
+                langCurrent.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (window.innerWidth <= 768) {
+                        langSwitcher.classList.toggle('active');
+                    }
+                });
+            }
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', () => {
+                if (langSwitcher) {
+                    langSwitcher.classList.remove('active');
+                }
+            });
+            
+            // Load saved language preference
+            const savedLang = localStorage.getItem('preferredLanguage') || 'ko';
+            switchLanguage(savedLang);
+        });
+    </script>
+    <script>
+        let isAuthenticated = false;
+        let currentUser = null;
+
+        // 인증 상태 확인
+        async function checkAuth() {
+            try {
+                const response = await fetch('/check-auth', {
+                    credentials: 'include'
+                });
+                const data = await response.json();
+                isAuthenticated = data.authenticated;
+                currentUser = data.username;
+
+                const loginBtn = document.getElementById('navLoginBtn');
+                const userDropdown = document.getElementById('userDropdown');
+                const userName = document.getElementById('userName');
+                const writeBtn = document.getElementById('writeBtn');
+                const myPageBtn = document.getElementById('myPageBtn');
+
+                if (isAuthenticated) {
+                    if (loginBtn) loginBtn.style.display = 'none';
+                    if (userDropdown) userDropdown.style.display = 'inline-block';
+                    if (userName && data.username) {
+                        userName.textContent = data.username;
+                    }
+                    writeBtn.style.display = 'inline-block';
+                    
+                    // 마이페이지 버튼 클릭 이벤트
+                    if (myPageBtn) {
+                        myPageBtn.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            const profileModal = document.getElementById('profileModal');
+                            
+                            // 사용자 정보 로드
+                            fetch('/api/get-user-info', {
+                                credentials: 'include'
+                            })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.success) {
+                                        document.getElementById('profile-name').value = data.user.name || '';
+                                        document.getElementById('profile-username').value = data.user.username || '';
+                                        document.getElementById('profile-email').value = data.user.email || '';
+                                        document.getElementById('profile-created').value = data.user.created_at || '';
+                                    }
+                                })
+                                .catch(error => console.error('Error loading user info:', error));
+                            
+                            if (profileModal) profileModal.style.display = 'flex';
+                            
+                            // 드롭다운 메뉴 닫기
+                            const userDropdownMenu = document.querySelector('.user-dropdown-menu');
+                            if (userDropdownMenu) {
+                                userDropdownMenu.classList.remove('show');
+                            }
+                        });
+                    }
+                } else {
+                    if (loginBtn) loginBtn.style.display = 'inline-block';
+                    if (userDropdown) userDropdown.style.display = 'none';
+                    writeBtn.style.display = 'none';
+                }
+                
+                // 프로필 모달 닫기 버튼
+                const profileModalClose = document.querySelector('.profile-modal-close');
+                const profileModal = document.getElementById('profileModal');
+                
+                if (profileModalClose && profileModal) {
+                    profileModalClose.addEventListener('click', function() {
+                        profileModal.style.display = 'none';
+                    });
+                }
+                
+                window.addEventListener('click', function(e) {
+                    if (e.target === profileModal) {
+                        profileModal.style.display = 'none';
+                    }
+                });
+            } catch (error) {
+                console.error('Auth check failed:', error);
+            }
+        }
+
+        // 게시글 목록 불러오기
+        async function loadPosts() {
+            try {
+                const response = await fetch('/api/posts', {
+                    credentials: 'include'
+                });
+                const posts = await response.json();
+                const postList = document.getElementById('postList');
+
+                if (posts.length === 0) {
+                    postList.innerHTML = '<tr><td colspan="5" class="no-posts">게시글이 없습니다.</td></tr>';
+                    return;
+                }
+
+                postList.innerHTML = posts.map(post => `
+                    <tr onclick="viewPost(${post.post_id})">
+                        <td>${post.post_id}</td>
+                        <td><a href="#" class="post-title" onclick="event.preventDefault(); viewPost(${post.post_id})">${post.title}</a></td>
+                        <td>${post.author}</td>
+                        <td>${new Date(post.created_at).toLocaleDateString()}</td>
+                        <td>${post.views}</td>
+                    </tr>
+                `).join('');
+            } catch (error) {
+                console.error('Failed to load posts:', error);
+            }
+        }
+
+        // 글 상세보기
+        let currentPostId = null;
+        let currentPostAuthor = null;
+        
+        async function viewPost(postId) {
+            try {
+                const response = await fetch(`/api/posts/${postId}`, {
+                    credentials: 'include'
+                });
+                const post = await response.json();
+
+                currentPostId = postId;
+                currentPostAuthor = post.author;
+
+                document.getElementById('detailTitle').textContent = post.title;
+                document.getElementById('detailAuthor').textContent = post.author;
+                document.getElementById('detailDate').textContent = new Date(post.created_at).toLocaleString();
+                document.getElementById('detailViews').textContent = post.views;
+                document.getElementById('detailContent').textContent = post.content;
+
+                // 작성자일 경우 수정/삭제 버튼 표시
+                const postActions = document.getElementById('postActions');
+                if (isAuthenticated && currentUser === post.author) {
+                    postActions.style.display = 'block';
+                } else {
+                    postActions.style.display = 'none';
+                }
+
+                document.getElementById('detailModal').classList.add('active');
+            } catch (error) {
+                console.error('Failed to load post:', error);
+                alert('게시글을 불러오는데 실패했습니다.');
+            }
+        }
+
+        // 모달 제어
+        document.getElementById('writeBtn').addEventListener('click', () => {
+            if (!isAuthenticated) {
+                alert('로그인이 필요합니다.');
+                window.location.href = '/login';
+                return;
+            }
+            document.getElementById('writeModal').classList.add('active');
+        });
+
+        document.getElementById('cancelBtn').addEventListener('click', () => {
+            document.getElementById('writeModal').classList.remove('active');
+            document.getElementById('writeForm').reset();
+        });
+
+        document.getElementById('closeDetailBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('detailModal').classList.remove('active');
+            loadPosts(); // 조회수가 업데이트되었으므로 목록 새로고침
+        });
+
+        // 수정 버튼 클릭
+        document.getElementById('editBtn').addEventListener('click', async () => {
+            document.getElementById('detailModal').classList.remove('active');
+            
+            const title = document.getElementById('detailTitle').textContent;
+            const content = document.getElementById('detailContent').textContent;
+            
+            document.getElementById('editPostId').value = currentPostId;
+            document.getElementById('editTitle').value = title;
+            document.getElementById('editContent').value = content;
+            
+            document.getElementById('editModal').classList.add('active');
+        });
+
+        // 삭제 버튼 클릭
+        document.getElementById('deleteBtn').addEventListener('click', async () => {
+            if (!confirm('정말 삭제하시겠습니까?')) {
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/posts/${currentPostId}`, {
+                    method: 'DELETE',
+                    credentials: 'include'
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    alert('게시글이 삭제되었습니다.');
+                    document.getElementById('detailModal').classList.remove('active');
+                    loadPosts();
+                } else {
+                    alert(result.message || '삭제 실패');
+                }
+            } catch (error) {
+                console.error('Failed to delete post:', error);
+                alert('게시글 삭제에 실패했습니다.');
+            }
+        });
+
+        // 수정 폼 제출
+        document.getElementById('editForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const postId = document.getElementById('editPostId').value;
+            const title = document.getElementById('editTitle').value;
+            const content = document.getElementById('editContent').value;
+
+            try {
+                const response = await fetch(`/api/posts/${postId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
+                    body: JSON.stringify({ title, content })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    alert('게시글이 수정되었습니다.');
+                    document.getElementById('editModal').classList.remove('active');
+                    document.getElementById('editForm').reset();
+                    loadPosts();
+                } else {
+                    alert(result.message || '수정 실패');
+                }
+            } catch (error) {
+                console.error('Failed to update post:', error);
+                alert('게시글 수정에 실패했습니다.');
+            }
+        });
+
+        // 수정 취소 버튼
+        document.getElementById('cancelEditBtn').addEventListener('click', () => {
+            document.getElementById('editModal').classList.remove('active');
+            document.getElementById('editForm').reset();
+        });
+
+        // 글쓰기 폼 제출
+        document.getElementById('writeForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const title = document.getElementById('title').value;
+            const content = document.getElementById('content').value;
+
+            try {
+                const response = await fetch('/api/posts', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
+                    body: JSON.stringify({ title, content })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    alert('게시글이 작성되었습니다.');
+                    document.getElementById('writeModal').classList.remove('active');
+                    document.getElementById('writeForm').reset();
+                    loadPosts();
+                } else {
+                    alert(result.message || '작성 실패');
+                }
+            } catch (error) {
+                console.error('Failed to create post:', error);
+                alert('게시글 작성에 실패했습니다.');
+            }
+        });
+
+        // 모달 외부 클릭시 닫기
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+        });
+
+        // 로그아웃 버튼 이벤트
+        document.addEventListener('DOMContentLoaded', function() {
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', async function(e) {
+                    e.preventDefault();
+                    try {
+                        const response = await fetch('/logout', {
+                            method: 'POST',
+                            credentials: 'include'
+                        });
+                        if (response.ok) {
+                            window.location.reload();
+                        }
+                    } catch (error) {
+                        console.error('Logout failed:', error);
+                    }
+                });
+            }
+
+            // 드롭다운 토글
+            const userBtn = document.querySelector('.user-btn');
+            const userDropdownMenu = document.querySelector('.user-dropdown-menu');
+            
+            if (userBtn) {
+                userBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    userDropdownMenu.classList.toggle('show');
+                });
+                
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('.user-dropdown')) {
+                        userDropdownMenu.classList.remove('show');
+                    }
+                });
+            }
+        });
+
+        // 초기화
+        document.addEventListener('DOMContentLoaded', () => {
+            checkAuth();
+            loadPosts();
+        });
+    </script>
+</body>
+</html>

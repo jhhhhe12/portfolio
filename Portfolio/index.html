@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Full-Stack Developer Hamini의 포트폴리오. 문제를 해결하고 가치를 창출하는 개발자입니다.">
+    <meta name="keywords" content="개발자, 포트폴리오, Full-Stack, React, Node.js, 하미니">
+    <meta name="author" content="Hamini">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.hamini.store/">
+    <meta property="og:title" content="Hamini - Developer Portfolio">
+    <meta property="og:description" content="문제를 해결하고 가치를 창출하는 Full-Stack 개발자">
+    
+    <title>Hamini - Developer Portfolio</title>
+    
+    <link rel="stylesheet" href="/css/style.css?v=20251212-37">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="header-top">
+                <div class="logo">Hamini</div>
+                <div class="language-switcher">
+                    <button class="lang-current">
+                        <span class="lang-icon">🌐</span>
+                        <span class="lang-text">KOR</span>
+                        <span class="lang-arrow">▼</span>
+                    </button>
+                    <div class="lang-dropdown">
+                        <button class="lang-option active" data-lang="ko">한국어</button>
+                        <button class="lang-option" data-lang="en">English</button>
+                    </div>
+                </div>
+            </div>
+            <div class="header-bottom">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home" data-ko="Home" data-en="Home">Home</a></li>
+                        <li><a href="#about" data-ko="Profile" data-en="Profile">Profile</a></li>
+                        <li><a href="#projects" data-ko="Projects" data-en="Projects">Projects</a></li>
+                        <li><a href="/board" data-ko="Board" data-en="Board">Board</a></li>
+                        <li><a href="#contact" data-ko="Contact" data-en="Contact">Contact</a></li>
+                    </ul>
+                    <a href="/login.html" class="login-btn" id="navLoginBtn">Login</a>
+                    <div class="user-dropdown" id="userDropdown" style="display: none;">
+                        <button class="user-btn">
+                            <span class="user-icon">👤</span>
+                            <span class="user-name" id="userName">User</span>
+                            <span class="user-arrow">▼</span>
+                        </button>
+                        <div class="user-dropdown-menu">
+                            <a href="#" id="myPageBtn" data-ko="마이페이지" data-en="My Page">마이페이지</a>
+                            <a href="#" id="logoutBtn" data-ko="로그아웃" data-en="Logout">로그아웃</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero fade-in-section" id="home">
+        <div class="hero-content">
+            <p class="subtitle typing-effect" data-ko="Full-Stack Developer & Builder" data-en="Full-Stack Developer & Builder">
+                <span class="typing-text">Full-Stack Developer & Builder</span>
+                <span class="typing-cursor"></span>
+            </p>
+            <p class="description fade-in-delay" data-ko="팀과 함께 성장하며 아이디어를 빠르고 정확하게 제품으로 완성합니다." data-en="Building ideas into products quickly and precisely with the team.">팀과 함께 성장하며 아이디어를 빠르고 정확하게 제품으로 완성합니다.</p>
+            <a href="#projects" class="cta-button fade-in-delay-2" data-ko="포트폴리오 →" data-en="View Portfolio">포트폴리오 →</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about fade-in-section" id="about">
+        <h2 class="profile-title" data-ko="PROFILE" data-en="PROFILE">
+            <span class="arrow-icon">↓</span>
+            PROFILE
+        </h2>
+        <p class="profile-highlight">
+            <span class="profile-typing" data-ko="새로운 기술을 두려워하지 않고 시도하며 배우는 개발자입니다." data-en="A developer who is not afraid of new technologies and learns by trying.">새로운 기술을 두려워하지 않고 시도하며 배우는 개발자입니다.</span>
+        </p>
+        <div class="about-content">
+            <div class="profile-image">
+                <img src="/images/profile.jpeg" alt="Profile Photo" />
+            </div>
+            <div class="about-text">
+                <h3 data-ko="백엔드 개발자 (Backend Developer)" data-en="Backend Developer">백엔드 개발자 (Backend Developer)</h3>
+                <p data-ko="비전공자로 개발을 시작했지만, Java 기초부터 Spring Boot, 데이터베이스, 리눅스 시스템까지 단계적으로 학습하며 기본기를 다지는 데 집중했으며, 학습한 내용을 직접 프로젝트에 적용하며 웹 서비스 구현과 AWS 배포까지 경험했습니다." data-en="Although I started development as a non-major, I focused on building fundamentals by learning step by step from Java basics to Spring Boot, databases, and Linux systems, and experienced web service implementation and AWS deployment by applying what I learned directly to projects.">비전공자로 개발을 시작했지만
+Java 기초부터 Spring Boot, 데이터베이스, 리눅스 시스템까지 단계적으로 학습하며
+기본기를 다지는 데 집중했으며, 학습한 내용을 직접 프로젝트에 적용하며
+웹 서비스 구현과 AWS 배포까지 경험했습니다.</p>
+<h4 data-ko="개발 경험" data-en="Development Experience">개발 경험</h4>
+                <p data-ko="- LMS(학습 관리 시스템) 프로젝트
+- 주차장 모니터링 AI 프로젝트
+- Windows 개발 환경을 Linux 운영 환경으로 포팅
+- AWS Lightsail에 Linux 서버 배포 및 운영" data-en="Development Experience
+- LMS (Learning Management System) Project
+- Parking Monitoring AI Project
+- Porting Windows development environment to Linux operating environment
+- AWS Lightsail Linux server deployment and operation"><strong>개발 경험</strong>
+- LMS(학습 관리 시스템) 프로젝트
+- 주차장 모니터링 AI 프로젝트
+- Windows 개발 환경을 Linux 운영 환경으로 포팅
+- AWS Lightsail에 Linux 서버 배포 및 운영</p>
+
+<h4 data-ko="지향하는 방향" data-en="Direction I Pursue">지향하는 방향</h4>
+                <p data-ko="- 사용자에게 실질적인 가치를 제공하는 서비스 개발
+- 기본기에 충실한 코드 작성
+- 개발부터 배포까지 전체 과정 이해
+- 팀과 함께 성장하는 커뮤니케이션" data-en="Direction I Pursue
+- Developing services that provide real value to users
+- Writing code faithful to fundamentals
+- Understanding the entire process from development to deployment
+- Communication that grows together with the team"><strong>지향하는 방향</strong>
+- 사용자에게 실질적인 가치를 제공하는 서비스 개발
+- 기본기에 충실한 코드 작성
+- 개발부터 배포까지 전체 과정 이해
+- 팀과 함께 성장하는 커뮤니케이션
+                </p>
+                <div class="skills">
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">CSS</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">SpringBoot</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">H2</span>
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">Linux</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">GitHub</span>
+                    <span class="skill-tag">YOLOv8</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Education Timeline Section -->
+    <section class="timeline fade-in-section" id="timeline">
+        <h2 data-ko="Work & Education" data-en="Work & Education">Work & Education</h2>
+        <p class="section-subtitle" data-ko="저의 학력, 경력 및 교육 이력입니다" data-en="My academic background, career, and education history">저의 학력, 경력 및 교육 이력입니다</p>
+        
+        <div class="timeline-infographic">
+            <!-- Timeline Line -->
+            <div class="timeline-line"></div>
+            
+            <!-- 2014 학력 -->
+            <div class="timeline-node" data-year="2014">
+                <div class="node-circle" style="background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);">
+                    <span class="node-icon">2014</span>
+                </div>
+                <div class="node-content node-bottom">
+                    <div class="node-year">🎓</div>
+                    <h4 data-ko="학력" data-en="Education">학력</h4>
+                    <p data-ko="OO 대학교 소방방재학과 (2014~2016) 중퇴" data-en="OO University Fire & Disaster Prevention (2014~2016) Discontinued"> 전공: oo 대학교 소방방재학과 (2014~2016) 중퇴</p>
+                </div>
+            </div>
+
+            <!-- 2018-2024 경력 -->
+            <div class="timeline-node" data-year="2018-2024">
+                <div class="node-circle" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <span class="node-icon">2018-2024</span>
+                </div>
+                <div class="node-content node-top">
+                    <div class="node-year">💼</div>
+                    <h4 data-ko="경력" data-en="Career">경력</h4>
+                    <p data-ko="OOO커피 | 매니저
+(2018.01 ~ 2024.07 / 6년 7개월)
+- 매장 운영 및 매출 관리
+- 팀 리딩 및 직원 교육
+- 고객 만족도 개선 및 서비스 품질 유지
+- 2024년 대구 컵테이스터스 챔피언십 출전
+- 근무 중 웹/IT 기술에 관심을 갖고 관련 공부 시작" data-en="OOO Coffee | Manager
+(2018.01 ~ 2024.07 / 6y 7m)
+- Store operations and sales management
+- Team leading and staff training
+- Customer satisfaction improvement and service quality maintenance
+- Participated in 2024 Daegu Cup Tasters Championship
+- Started studying web/IT technology while working">OOO커피 | 매니저 (2018.01 ~ 2024.07 / 6년 7개월)
+- 매장 운영 및 매출 관리
+- 팀 리딩 및 직원 교육
+- 고객 만족도 개선 및 서비스 품질 유지
+- 2024년 대구 컵테이스터스 챔피언십 출전
+- 근무 중 웹/IT 기술에 관심을 갖고 관련 공부 시작</p>
+                </div>
+            </div>
+
+            <!-- 2025.06 교육 시작 -->
+            <div class="timeline-node" data-year="2025.06">
+                <div class="node-circle" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <span class="node-icon">2025.06</span>
+                </div>
+                <div class="node-content node-bottom">
+                    <div class="node-year">📚</div>
+                    <h4 data-ko="교육" data-en="Training">교육</h4>
+                    <p data-ko="백엔드/프론트엔드 HTML, CSS, JS Java 기초교육" data-en="Backend/Frontend HTML, CSS, JS Java">백엔드/프론트엔드 HTML, CSS, JS Java 기초교육</p>
+                </div>
+            </div>
+
+            <!-- 2025.09 교육 -->
+            <div class="timeline-node" data-year="2025.09">
+                <div class="node-circle" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                    <span class="node-icon">2025.09</span>
+                </div>
+                <div class="node-content node-top">
+                    <div class="node-year">🗄️</div>
+                    <h4 data-ko="교육" data-en="Training">교육</h4>
+                    <p data-ko="DB/Git 머신러닝 딥러닝 기초교육" data-en="DB/Git/AI MySQL ML/DL">DB/Git/AI 머신러닝 딥러닝 기초교육</p>
+                </div>
+            </div>
+
+            <!-- 2025.10 교육 -->
+            <div class="timeline-node" data-year="2025.10">
+                <div class="node-circle" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                    <span class="node-icon">2025.10</span>
+                </div>
+                <div class="node-content node-bottom">
+                    <div class="node-year">🔧</div>
+                    <h4 data-ko="교육" data-en="Training">교육</h4>
+                    <p data-ko="LMS 프로젝트" data-en="LMS Project Spring Boot Thymeleaf, H2">LMS 프로젝트/p>
+                </div>
+            </div>
+
+            <!-- 2025.11 교육 -->
+            <div class="timeline-node" data-year="2025.11">
+                <div class="node-circle" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+                    <span class="node-icon">2025.11</span>
+                </div>
+                <div class="node-content node-top">
+                    <div class="node-year">🤖</div>
+                    <h4 data-ko="교육" data-en="Training">교육</h4>
+                    <p data-ko="보행 영상 AI 프로젝트" data-en="Pedestrian AI React, Python YOLOv8">보행 영상 AI 프로젝트트/p>
+                </div>
+            </div>
+
+            <!-- 2025.12 교육 -->
+            <div class="timeline-node" data-year="2025.12">
+                <div class="node-circle" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                    <span class="node-icon">2025.12</span>
+                </div>
+                <div class="node-content node-bottom">
+                    <div class="node-year">☁️</div>
+                    <h4 data-ko="교육" data-en="Training">교육</h4>
+                    <p data-ko="오픈스택 기반 프라이빗 클라우드 구축 및 운용 (Docker/쿠버네티스/AWS)" data-en="Cloud Infra OpenStack, Docker K8s, AWS">오픈스택 기반 프라이빗 클라우드 구축 및 운용 (Docker/쿠버네티스/AWS)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects fade-in-section" id="projects">
+        <h2 data-ko="프로젝트" data-en="Projects">프로젝트</h2>
+        <p class="section-subtitle" data-ko="제가 진행했던 주요 프로젝트들입니다" data-en="Key projects I've worked on">제가 진행했던 주요 프로젝트들입니다</p>
+        <div class="project-grid">
+            <article class="project-card" onclick="window.location.href='/projects/lms.html'" style="cursor: pointer;">
+                <div class="project-image">
+                    <img src="/images/lms.jpg" alt="LMS 프로젝트" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                </div>
+                <div class="project-info">
+                    <h3 data-ko="LMS 프로젝트" data-en="LMS Project">LMS 프로젝트</h3>
+                    <time class="date">2024.10 - 2024.11</time>
+                    <p data-ko="학습 관리 시스템(Learning Management System) 개발. 강의 관리, 수강생 관리, 과제 제출 및 평가 시스템을 통합한 플랫폼입니다." data-en="Development of Learning Management System. An integrated platform for course management, student management, assignment submission and evaluation systems.">
+                        학습 관리 시스템(Learning Management System) 개발. 
+                        강의 관리, 수강생 관리, 과제 제출 및 평가 시스템을 통합한 플랫폼입니다.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Spring Boot</span>
+                        <span class="tech-tag">Thymeleaf</span>
+                        <span class="tech-tag">STS4</span>
+                        <span class="tech-tag">H2 Database</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card" onclick="window.location.href='/projects/ai.html'" style="cursor: pointer;">
+                <div class="project-image">
+                    <img src="/images/parking.jpg" alt="주차장 모니터링 AI 프로젝트" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                </div>
+                <div class="project-info">
+                    <h3 data-ko="주차장 모니터링 AI 프로젝트" data-en="Parking Monitoring AI Project">주차장 모니터링 AI 프로젝트</h3>
+                    <time class="date">2024.11 - 2024.12</time>
+                    <p data-ko="주차장의 주차 공간 이용 현황을 한눈에 파악할 수 있도록, AI가 차량을 자동으로 인식하고 슬롯별 점유 상태를 계산합니다. 그 결과를 전체 주차장 현황과 함께 색상 박스로 직관적으로 표시하여 실시간 모니터링이 가능하도록 구현했습니다." data-en="AI-based parking monitoring system that automatically recognizes vehicles and calculates slot occupancy status. Results are displayed intuitively with color boxes along with overall parking status for real-time monitoring.">
+                        주차장의 주차 공간 이용 현황을 한눈에 파악할 수 있도록, AI가 차량을 자동으로 인식하고 슬롯별 점유 상태를 계산합니다. 그 결과를 전체 주차장 현황과 함께 색상 박스로 직관적으로 표시하여 실시간 모니터링이 가능하도록 구현했습니다.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">OpenCV</span>
+                        <span class="tech-tag">Miniconda</span>
+                        <span class="tech-tag">Yolo</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card" onclick="window.location.href='/projects/aws.html'" style="cursor: pointer;">
+                <div class="project-image">
+                    <img src="/images/aws.jpg" alt="AWS 프로젝트" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                </div>
+                <div class="project-info">
+                    <h3 data-ko="AWS 프로젝트" data-en="AWS Project">AWS 프로젝트</h3>
+                    <time class="date">2024.12</time>
+                    <p data-ko="Windows 환경에서 개발한 LMS를 Linux 환경으로 포팅하고
+                        AWS Lightsail에 배포하여 실제 서비스로 운영한 프로젝트" data-en="Building and deploying cloud native applications. Designed and implemented highly available and scalable infrastructure using AWS services.">
+                        Windows 환경에서 개발한 LMS를 Linux 환경으로 포팅하고
+                        AWS Lightsail에 배포하여 실제 서비스로 운영한 프로젝트
+
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">AWS Lightsail (Ubuntu 22.04)</span>
+                        <span class="tech-tag">가비아 도메인 + AWS DNS</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact fade-in-section" id="contact">
+        <h2 data-ko="Contact" data-en="Contact">Contact</h2>
+        <p class="section-subtitle" data-ko="언제든지 연락주세요!" data-en="Feel free to reach out anytime!">언제든지 연락주세요!</p>
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="icon">📧</div>
+                <p>Email</p>
+                <a href="mailto:Kd5823@naver.com">Kd5823@naver.com</a>
+            </div>
+            <div class="contact-item">
+                <div class="icon">💼</div>
+                <p>GitHub</p>
+                <a href="https://github.com/jhhhhe12" target="_blank" rel="noopener noreferrer">github.com/jhhhhe12</a>
+            </div>
+            <div class="contact-item">
+                <div class="icon">📞</div>
+                <p>Phone</p>
+                <a href="tel:010-1234-5678">010-1234-5678</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p data-ko="&copy; 2025 Hamini. All rights reserved." data-en="&copy; 2025 Hamini. All rights reserved.">&copy; 2025 Hamini. All rights reserved.</p>
+        <p>Built with passion and dedication</p>
+    </footer>
+
+    <!-- Profile Modal -->
+    <div id="profileModal" class="profile-modal">
+        <div class="profile-modal-content">
+            <span class="profile-modal-close">&times;</span>
+            <div class="profile-modal-header">
+                <h1>Hamini</h1>
+                <p id="profileModalTitle">마이페이지</p>
+            </div>
+            <div class="profile-modal-body">
+                <div class="profile-info-group">
+                    <label>이름</label>
+                    <input type="text" id="profile-name" readonly>
+                </div>
+                <div class="profile-info-group">
+                    <label>아이디</label>
+                    <input type="text" id="profile-username" readonly disabled>
+                </div>
+                <div class="profile-info-group">
+                    <label>이메일</label>
+                    <input type="text" id="profile-email" readonly>
+                </div>
+                <div class="profile-info-group" id="currentPasswordGroup" style="display: none;">
+                    <label>현재 비밀번호</label>
+                    <input type="password" id="profile-current-password" placeholder="현재 비밀번호 입력">
+                </div>
+                <div class="profile-info-group" id="passwordGroup" style="display: none;">
+                    <label>새 비밀번호</label>
+                    <input type="password" id="profile-password" placeholder="변경할 경우만 입력">
+                </div>
+                <div class="profile-info-group" id="passwordConfirmGroup" style="display: none;">
+                    <label>새 비밀번호 재입력</label>
+                    <input type="password" id="profile-password-confirm" placeholder="비밀번호 확인">
+                </div>
+                <div class="profile-info-group">
+                    <label>가입일</label>
+                    <input type="text" id="profile-created" readonly disabled>
+                </div>
+            </div>
+            <div class="profile-modal-footer">
+                <button class="profile-modal-btn profile-edit-btn" id="editProfileBtn">수정</button>
+                <button class="profile-modal-btn profile-save-btn" id="saveProfileBtn" style="display: none;">저장</button>
+                <button class="profile-modal-btn profile-cancel-btn" id="cancelEditBtn" style="display: none;">취소</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/main.js"></script>
+    <script>
+        // 로그인 상태 확인 및 버튼 업데이트
+        async function checkAuthStatus() {
+            try {
+                console.log('Checking auth status...');
+                const response = await fetch('/check-auth', {
+                    credentials: 'include',
+                    headers: {
+                        'Cache-Control': 'no-cache'
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                console.log('Auth data:', data);
+                
+                const loginBtn = document.getElementById('loginBtn');
+                const userDropdown = document.getElementById('userDropdown');
+                
+                if (data.authenticated) {
+                    console.log('User is authenticated:', data.username);
+                    if (loginBtn) {
+                        loginBtn.style.display = 'none';
+                        console.log('Login button hidden');
+                    }
+                    if (userDropdown) {
+                        userDropdown.style.display = 'inline-block';
+                        console.log('User dropdown shown');
+                    }
+                    // 사용자 이름 표시
+                    const userName = document.getElementById('userName');
+                    if (userName && data.username) {
+                        userName.textContent = data.username;
+                        console.log('Username set to:', data.username);
+                    }
+                } else {
+                    console.log('User is not authenticated');
+                    if (loginBtn) {
+                        loginBtn.style.display = 'inline-block';
+                    }
+                    if (userDropdown) {
+                        userDropdown.style.display = 'none';
+                    }
+                }
+            } catch (error) {
+                console.error('Auth check failed:', error);
+                // 에러 발생 시 기본값: 로그인 버튼 표시
+                const loginBtn = document.getElementById('loginBtn');
+                const userDropdown = document.getElementById('userDropdown');
+                if (loginBtn) loginBtn.style.display = 'inline-block';
+                if (userDropdown) userDropdown.style.display = 'none';
+            }
+        }
+
+        // 페이지 로드 시 실행
+        console.log('Page loaded, setting up auth check');
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', checkAuthStatus);
+        } else {
+            // DOM이 이미 로드된 경우 즉시 실행
+            checkAuthStatus();
+        }
+
+        // 로그아웃 버튼
+        document.addEventListener('DOMContentLoaded', function() {
+            const logoutBtn = document.getElementById('logoutBtn');
+            
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', async function(e) {
+                    e.preventDefault();
+                    try {
+                        await fetch('/logout', {
+                            method: 'POST',
+                            credentials: 'include'
+                        });
+                    } catch (error) {
+                        console.error('Logout error:', error);
+                    }
+                    window.location.href = '/';
+                });
+            }
+        });
+
+        // User dropdown toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const userBtn = document.querySelector('.user-btn');
+            const userDropdownMenu = document.querySelector('.user-dropdown-menu');
+            
+            if (userBtn) {
+                userBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    userDropdownMenu.classList.toggle('show');
+                });
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('.user-dropdown')) {
+                        userDropdownMenu.classList.remove('show');
+                    }
+                });
+            }
+        });
+
+        // Profile Modal
+        const profileModal = document.getElementById('profileModal');
+        const profileBtn = document.getElementById('profileBtn');
+        const closeProfileBtn = document.getElementById('closeProfileBtn');
+        const profileModalClose = document.querySelector('.profile-modal-close');
+        const editProfileBtn = document.getElementById('editProfileBtn');
+        const saveProfileBtn = document.getElementById('saveProfileBtn');
+        const cancelEditBtn = document.getElementById('cancelEditBtn');
+        const profileModalTitle = document.getElementById('profileModalTitle');
+        const passwordGroup = document.getElementById('passwordGroup');
+        
+        let isEditMode = false;
+        let originalData = {};
+
+        function toggleEditMode(enable) {
+            isEditMode = enable;
+            const nameInput = document.getElementById('profile-name');
+            const emailInput = document.getElementById('profile-email');
+            const currentPasswordInput = document.getElementById('profile-current-password');
+            const passwordInput = document.getElementById('profile-password');
+            const passwordConfirmInput = document.getElementById('profile-password-confirm');
+            const currentPasswordGroup = document.getElementById('currentPasswordGroup');
+            const passwordConfirmGroup = document.getElementById('passwordConfirmGroup');
+            
+            if (enable) {
+                nameInput.removeAttribute('readonly');
+                emailInput.removeAttribute('readonly');
+                nameInput.style.cursor = 'text';
+                emailInput.style.cursor = 'text';
+                nameInput.style.background = 'rgba(0, 0, 0, 0.5)';
+                emailInput.style.background = 'rgba(0, 0, 0, 0.5)';
+                currentPasswordGroup.style.display = 'block';
+                passwordGroup.style.display = 'block';
+                passwordConfirmGroup.style.display = 'block';
+                editProfileBtn.style.display = 'none';
+                saveProfileBtn.style.display = 'inline-block';
+                cancelEditBtn.style.display = 'inline-block';
+                profileModalTitle.textContent = '마이페이지 수정';
+                
+                originalData = {
+                    name: nameInput.value,
+                    email: emailInput.value
+                };
+            } else {
+                nameInput.setAttribute('readonly', 'readonly');
+                emailInput.setAttribute('readonly', 'readonly');
+                nameInput.style.cursor = 'default';
+                emailInput.style.cursor = 'default';
+                nameInput.style.background = 'rgba(0, 0, 0, 0.3)';
+                emailInput.style.background = 'rgba(0, 0, 0, 0.3)';
+                currentPasswordGroup.style.display = 'none';
+                passwordGroup.style.display = 'none';
+                passwordConfirmGroup.style.display = 'none';
+                currentPasswordInput.value = '';
+                passwordInput.value = '';
+                passwordConfirmInput.value = '';
+                editProfileBtn.style.display = 'inline-block';
+                saveProfileBtn.style.display = 'none';
+                cancelEditBtn.style.display = 'none';
+                profileModalTitle.textContent = '마이페이지';
+            }
+        }
+
+        if (profileBtn) {
+            profileBtn.addEventListener('click', async function(e) {
+                e.preventDefault();
+                try {
+                    const response = await fetch('/api/user/profile', {
+                        credentials: 'include'
+                    });
+                    const data = await response.json();
+                    if (data.success) {
+                        document.getElementById('profile-name').value = data.user.name || '';
+                        document.getElementById('profile-username').value = data.user.username || '';
+                        document.getElementById('profile-email').value = data.user.email || '';
+                        document.getElementById('profile-created').value = data.user.created_at ? new Date(data.user.created_at).toLocaleDateString('ko-KR') : '';
+                        
+                        // 수정 모드 초기화
+                        toggleEditMode(false);
+                        
+                        // 모달 표시
+                        profileModal.style.display = 'flex';
+                    } else {
+                        alert(data.message || '프로필을 불러올 수 없습니다.');
+                    }
+                } catch (error) {
+                    console.error('Failed to load profile:', error);
+                    alert('프로필을 불러오는 중 오류가 발생했습니다.');
+                }
+            });
+        }
+
+        if (editProfileBtn) {
+            editProfileBtn.addEventListener('click', function() {
+                toggleEditMode(true);
+            });
+        }
+
+        if (cancelEditBtn) {
+            cancelEditBtn.addEventListener('click', function() {
+                document.getElementById('profile-name').value = originalData.name;
+                document.getElementById('profile-email').value = originalData.email;
+                toggleEditMode(false);
+            });
+        }
+
+        if (saveProfileBtn) {
+            saveProfileBtn.addEventListener('click', async function() {
+                const name = document.getElementById('profile-name').value;
+                const email = document.getElementById('profile-email').value;
+                const currentPassword = document.getElementById('profile-current-password').value;
+                const password = document.getElementById('profile-password').value;
+                const passwordConfirm = document.getElementById('profile-password-confirm').value;
+                
+                // 현재 비밀번호 확인
+                if (!currentPassword) {
+                    alert('현재 비밀번호를 입력해주세요.');
+                    return;
+                }
+                
+                // 비밀번호 확인
+                if (password && password !== passwordConfirm) {
+                    alert('새 비밀번호가 일치하지 않습니다.');
+                    return;
+                }
+                
+                const updateData = { 
+                    name, 
+                    email,
+                    currentPassword,
+                    newPassword: password || ''
+                };
+                
+                try {
+                    const response = await fetch('/api/user/profile', {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        credentials: 'include',
+                        body: JSON.stringify(updateData)
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        alert(data.message);
+                        toggleEditMode(false);
+                        // 비밀번호 필드 초기화
+                        document.getElementById('profile-password').value = '';
+                        document.getElementById('profile-password-confirm').value = '';
+                    } else {
+                        alert(data.message);
+                    }
+                } catch (error) {
+                    console.error('Failed to update profile:', error);
+                    alert('프로필 업데이트 중 오류가 발생했습니다.');
+                }
+            });
+        }
+
+        if (closeProfileBtn) {
+            closeProfileBtn.addEventListener('click', function() {
+                toggleEditMode(false);
+                profileModal.style.display = 'none';
+            });
+        }
+
+        if (profileModalClose) {
+            profileModalClose.addEventListener('click', function() {
+                toggleEditMode(false);
+                profileModal.style.display = 'none';
+            });
+        }
+
+        window.addEventListener('click', function(e) {
+            if (e.target === profileModal) {
+                toggleEditMode(false);
+                profileModal.style.display = 'none';
+            }
+        });
+
+        // Smooth scroll without hash in URL
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check login status
+            const navLoginBtn = document.getElementById('navLoginBtn');
+            const userDropdown = document.getElementById('userDropdown');
+            const userName = document.getElementById('userName');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const myPageBtn = document.getElementById('myPageBtn');
+            const profileModal = document.getElementById('profileModal');
+
+            // User dropdown toggle - 함수로 분리하여 로그인 후에도 작동하도록
+            function setupUserDropdown() {
+                const userBtn = document.querySelector('.user-btn');
+                const userDropdownMenu = document.querySelector('.user-dropdown-menu');
+                
+                if (userBtn && userDropdownMenu) {
+                    // 기존 이벤트 리스너 제거를 위해 복제
+                    const newUserBtn = userBtn.cloneNode(true);
+                    userBtn.parentNode.replaceChild(newUserBtn, userBtn);
+                    
+                    newUserBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log('User button clicked');
+                        userDropdownMenu.classList.toggle('show');
+                    });
+                }
+
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function(e) {
+                    const userDropdownMenu = document.querySelector('.user-dropdown-menu');
+                    if (userDropdown && !userDropdown.contains(e.target) && userDropdownMenu) {
+                        userDropdownMenu.classList.remove('show');
+                    }
+                });
+            }
+
+            // 로그인 상태 확인
+            fetch('/api/check-session', {
+                credentials: 'include'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Login status:', data);
+                    if (data.loggedIn) {
+                        // User is logged in - hide login button, show user dropdown
+                        if (navLoginBtn) navLoginBtn.style.display = 'none';
+                        if (userDropdown) {
+                            userDropdown.style.display = 'inline-block';
+                        }
+                        if (userName) userName.textContent = data.username;
+                        // 드롭다운 설정
+                        setTimeout(setupUserDropdown, 100);
+                    } else {
+                        // User is not logged in - show login button, hide user dropdown
+                        if (navLoginBtn) navLoginBtn.style.display = 'inline-block';
+                        if (userDropdown) userDropdown.style.display = 'none';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error checking login status:', error);
+                    // On error, show login button
+                    if (navLoginBtn) navLoginBtn.style.display = 'inline-block';
+                    if (userDropdown) userDropdown.style.display = 'none';
+                });
+
+            // Logout functionality
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const userDropdownMenu = document.querySelector('.user-dropdown-menu');
+                    if (userDropdownMenu) {
+                        userDropdownMenu.classList.remove('show');
+                    }
+                    fetch('/api/logout', {
+                        method: 'POST',
+                        credentials: 'include'
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            window.location.href = '/';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Logout error:', error);
+                        window.location.href = '/';
+                    });
+                });
+            }
+
+            // My Page modal functionality
+            if (myPageBtn) {
+                myPageBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    if (!profileModal) {
+                        console.error('Profile modal not found');
+                        return;
+                    }
+                    
+                    // 사용자 정보 로드
+                    fetch('/api/get-user-info', {
+                        credentials: 'include'
+                    })
+                        .then(response => {
+                            console.log('Response status:', response.status);
+                            return response.json();
+                        })
+                        .then(data => {
+                            console.log('User info loaded:', data);
+                            if (data.success && data.user) {
+                                const nameField = document.getElementById('profile-name');
+                                const usernameField = document.getElementById('profile-username');
+                                const emailField = document.getElementById('profile-email');
+                                const createdField = document.getElementById('profile-created');
+                                
+                                if (nameField) {
+                                    nameField.value = data.user.name || '';
+                                    console.log('Name set:', data.user.name);
+                                }
+                                if (usernameField) {
+                                    usernameField.value = data.user.username || '';
+                                    console.log('Username set:', data.user.username);
+                                }
+                                if (emailField) {
+                                    emailField.value = data.user.email || '';
+                                    console.log('Email set:', data.user.email);
+                                }
+                                if (createdField) {
+                                    createdField.value = data.user.created_at || '';
+                                    console.log('Created set:', data.user.created_at);
+                                }
+                            } else {
+                                console.error('Failed to load user info:', data);
+                                alert('로그인 정보를 불러올 수 없습니다: ' + (data.message || '알 수 없는 오류'));
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error loading user info:', error);
+                            alert('오류 발생: ' + error.message);
+                        });
+                    
+                    profileModal.style.display = 'flex';
+                    // 드롭다운 메뉴 닫기
+                    const userDropdownMenu = document.querySelector('.user-dropdown-menu');
+                    if (userDropdownMenu) {
+                        userDropdownMenu.classList.remove('show');
+                    }
+                });
+            }
+
+            // Hamburger menu toggle
+            const hamburger = document.querySelector('.hamburger');
+            const nav = document.querySelector('nav');
+            const navLinks = document.querySelectorAll('nav a');
+
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                nav.classList.toggle('active');
+            });
+
+            // Close menu when clicking on a link
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    nav.classList.remove('active');
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+                    hamburger.classList.remove('active');
+                    nav.classList.remove('active');
+                }
+            });
+
+            // Smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        // URL에서 hash 제거
+                        history.pushState(null, null, ' ');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
