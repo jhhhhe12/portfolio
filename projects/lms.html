@@ -11,19 +11,48 @@
     <!-- Header -->
     <header>
         <div class="nav-container">
-            <div class="logo"><a href="/" style="text-decoration: none; color: inherit;">Hamini</a></div>
-            <nav>
-                <ul>
-                    <li><a href="/#home">Home</a></li>
-                    <li><a href="/#about">Profile</a></li>
-                    <li><a href="/#philosophy">Philosophy</a></li>
-                    <li><a href="/#architecture">Architecture</a></li>
-                    <li><a href="/#projects">Projects</a></li>
-                    <li><a href="/board">Board</a></li>
-                    <li><a href="/#contact">Contact</a></li>
-                    <li><a href="/login.html" class="login-btn">Login</a></li>
-                </ul>
-            </nav>
+            <div class="header-top">
+                <div class="logo"><a href="/" style="text-decoration: none; color: inherit;">Hamini</a></div>
+                <div class="language-switcher">
+                    <button class="lang-current">
+                        <span class="lang-icon">🌐</span>
+                        <span class="lang-text">KOR</span>
+                        <span class="lang-arrow">▼</span>
+                    </button>
+                    <div class="lang-dropdown">
+                        <button class="lang-option active" data-lang="ko">한국어</button>
+                        <button class="lang-option" data-lang="en">English</button>
+                    </div>
+                </div>
+            </div>
+            <div class="header-bottom">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="/#home" data-ko="Home" data-en="Home">Home</a></li>
+                        <li><a href="/#about" data-ko="Profile" data-en="Profile">Profile</a></li>
+                        <li><a href="/#projects" data-ko="Projects" data-en="Projects">Projects</a></li>
+                        <li><a href="/board" data-ko="Board" data-en="Board">Board</a></li>
+                        <li><a href="/#contact" data-ko="Contact" data-en="Contact">Contact</a></li>
+                    </ul>
+                    <a href="/login.html" class="login-btn" id="navLoginBtn">Login</a>
+                    <div class="user-dropdown" id="userDropdown" style="display: none;">
+                        <button class="user-btn">
+                            <span class="user-icon">👤</span>
+                            <span class="user-name" id="userName">User</span>
+                            <span class="user-arrow">▼</span>
+                        </button>
+                        <div class="user-dropdown-menu">
+                            <a href="#" id="myPageBtn" data-ko="마이페이지" data-en="My Page">마이페이지</a>
+                            <a href="#" id="logoutBtn" data-ko="로그아웃" data-en="Logout">로그아웃</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
         </div>
     </header>
 
@@ -56,9 +85,15 @@
                         <p style="color: #718096; font-size: 0.85rem; margin: 0;">2024.10 - 2024.11</p>
                     </div>
 
-                      <div style="padding: 1rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; text-align: center; margin-bottom: 30px;">
+                      <div style="padding: 1rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; text-align: center; margin-bottom: 15px;">
                         <p style="margin: 0 0 0.5rem 0; color: white; font-size: 0.75rem; opacity: 0.9;">🔗 GitHub Repository</p>
                         <a href="https://github.com/jhhhhe12/lms-project" target="_blank" rel="noopener noreferrer" style="color: white; text-decoration: none; font-size: 0.75rem; font-weight: 600; word-break: break-all; line-height: 1.4;">github.com/jhhhhe12/lms-project</a>
+                    </div>
+
+                    <div style="padding: 1rem; background: linear-gradient(135deg, #48bb78 0%, #38a169 100%); border-radius: 8px; text-align: center; margin-bottom: 30px;">
+                        <p style="margin: 0 0 0.5rem 0; color: white; font-size: 0.75rem; opacity: 0.9;">🚀 프로젝트 URL</p>
+                        <a href="https://lms.hamini.store/" target="_blank" rel="noopener noreferrer" style="color: white; text-decoration: none; font-size: 0.75rem; font-weight: 600; word-break: break-all; line-height: 1.4; display: block; margin-bottom: 0.5rem;">lms.hamini.store</a>
+                        <p style="margin: 0; color: white; font-size: 0.7rem; opacity: 0.85;">배포 환경: AWS Lightsail (Ubuntu 22.04)</p>
                     </div>
                     
                     <div style="margin-bottom: 2rem;">
@@ -103,6 +138,12 @@
                             <p style="font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">🤝 협업 툴</p>
                             <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
                                 <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">Notion</span>
+                            </div>
+                        </div>
+                           <div style="margin-top: 1.2rem;">
+                            <p style="font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">🐳 배포 </p>
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">AWS Lightsail</span>
                             </div>
                         </div>
                     </div>

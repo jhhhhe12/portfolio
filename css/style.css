@@ -825,11 +825,16 @@ section h2 {
     margin-bottom: 1rem;
     color: var(--text-light);
     line-height: 1.8;
+    white-space: pre-line;
 }
 
 .about-text p strong {
-    font-weight: 700;
-    color: var(--text-dark);
+    font-weight: 1000 !important;
+    color: #000000 !important;
+    font-size: 1.15em !important;
+    display: block;
+    margin-bottom: 0.3rem;
+    letter-spacing: -0.02em;
 }
 
 .skills {
@@ -865,7 +870,7 @@ section h2 {
 }
 
 .timeline .section-subtitle {
-    margin-bottom: 10rem;
+    margin-bottom: 15rem;
 }
 
 .timeline-infographic {
@@ -1711,11 +1716,6 @@ footer p {
         align-items: center;
     }
 
-    .logo {
-        flex: 0 0 auto;
-        text-align: left;
-    }
-
     .header-bottom {
         width: 100%;
         position: relative;
@@ -1795,7 +1795,6 @@ footer p {
         height: 100vh;
         background: #1a1a1a;
         transition: left 0.3s ease;
-        padding-top: 3rem;
         z-index: 1000;
         border-right: none;
     }
@@ -1810,6 +1809,12 @@ footer p {
         padding: 0;
         width: 100%;
         display: flex;
+    }
+
+    /* nav를 flexbox로 만들어서 order 적용 가능하게 */
+    nav {
+        display: flex;
+        flex-direction: column;
     }
 
     nav li {
@@ -1845,7 +1850,7 @@ footer p {
         order: -9 !important;
     }
 
-    /* 모바일 메뉴 내 로그인 버튼 스타일 */
+    /* 모바일 메뉴 내 로그인 버튼을 맨 위로 */
     nav .login-btn {
         position: static !important;
         right: auto !important;
@@ -1862,6 +1867,7 @@ footer p {
         box-shadow: none !important;
         color: #3b82f6 !important;
         font-weight: 600 !important;
+        order: -20 !important;
     }
 
     nav .login-btn:hover {
@@ -1870,11 +1876,17 @@ footer p {
         transform: none !important;
     }
 
-    /* 모바일 메뉴 내 사용자 드롭다운 */
+    /* 모바일 메뉴 내 사용자 드롭다운을 맨 위로 */
     nav .user-dropdown {
         width: 90%;
-        display: block !important;
         position: static !important;
+        order: -20 !important;
+    }
+
+    /* 로그인 상태일 때만 표시 */
+    nav .user-dropdown[style*="display: inline-block"],
+    nav .user-dropdown[style*="display: block"]:not([style*="display: none"]) {
+        display: block !important;
     }
 
     nav .user-btn {

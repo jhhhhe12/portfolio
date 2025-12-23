@@ -11,19 +11,48 @@
     <!-- Header -->
     <header>
         <div class="nav-container">
-            <div class="logo"><a href="/" style="text-decoration: none; color: inherit;">Hamini</a></div>
-            <nav>
-                <ul>
-                    <li><a href="/#home">Home</a></li>
-                    <li><a href="/#about">About</a></li>
-                    <li><a href="/#philosophy">Philosophy</a></li>
-                    <li><a href="/#architecture">Architecture</a></li>
-                    <li><a href="/#projects">Projects</a></li>
-                    <li><a href="/board">Board</a></li>
-                    <li><a href="/#contact">Contact</a></li>
-                    <li><a href="/login.html" class="login-btn">Login</a></li>
-                </ul>
-            </nav>
+            <div class="header-top">
+                <div class="logo"><a href="/" style="text-decoration: none; color: inherit;">Hamini</a></div>
+                <div class="language-switcher">
+                    <button class="lang-current">
+                        <span class="lang-icon">🌐</span>
+                        <span class="lang-text">KOR</span>
+                        <span class="lang-arrow">▼</span>
+                    </button>
+                    <div class="lang-dropdown">
+                        <button class="lang-option active" data-lang="ko">한국어</button>
+                        <button class="lang-option" data-lang="en">English</button>
+                    </div>
+                </div>
+            </div>
+            <div class="header-bottom">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="/#home" data-ko="Home" data-en="Home">Home</a></li>
+                        <li><a href="/#about" data-ko="Profile" data-en="Profile">Profile</a></li>
+                        <li><a href="/#projects" data-ko="Projects" data-en="Projects">Projects</a></li>
+                        <li><a href="/board" data-ko="Board" data-en="Board">Board</a></li>
+                        <li><a href="/#contact" data-ko="Contact" data-en="Contact">Contact</a></li>
+                    </ul>
+                    <a href="/login.html" class="login-btn" id="navLoginBtn">Login</a>
+                    <div class="user-dropdown" id="userDropdown" style="display: none;">
+                        <button class="user-btn">
+                            <span class="user-icon">👤</span>
+                            <span class="user-name" id="userName">User</span>
+                            <span class="user-arrow">▼</span>
+                        </button>
+                        <div class="user-dropdown-menu">
+                            <a href="#" id="myPageBtn" data-ko="마이페이지" data-en="My Page">마이페이지</a>
+                            <a href="#" id="logoutBtn" data-ko="로그아웃" data-en="Logout">로그아웃</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
         </div>
     </header>
 
@@ -55,23 +84,29 @@
                             </div>
                         </div>
                         <h2 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: #2d3748; font-weight: 700;">주차장 모니터링 AI 프로젝트</h2>
-                        <p style="color: #718096; font-size: 0.85rem; margin: 0;">2024.06 - 2024.08</p>
+                        <p style="color: #718096; font-size: 0.85rem; margin: 0;">2024.11 - 2024.12</p>
                     </div>
 
-                    <div style="padding: 1rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; text-align: center; margin-bottom: 30px;">
+                    <div style="padding: 1rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; text-align: center; margin-bottom: 15px;">
                         <p style="margin: 0 0 0.5rem 0; color: white; font-size: 0.75rem; opacity: 0.9;">🔗 GitHub Repository</p>
                         <a href="https://github.com/jhhhhe12/ai-walking-analysis" target="_blank" rel="noopener noreferrer" style="color: white; text-decoration: none; font-size: 0.75rem; font-weight: 600; word-break: break-all; line-height: 1.4;">github.com/jhhhhe12/ai-walking</a>
                     </div>
+
+                    <div style="padding: 1rem; background: linear-gradient(135deg, #48bb78 0%, #38a169 100%); border-radius: 8px; text-align: center; margin-bottom: 30px;">
+                        <p style="margin: 0 0 0.5rem 0; color: white; font-size: 0.75rem; opacity: 0.9;">🚀 프로젝트 URL</p>
+                        <a href="https://ai.hamini.store/" target="_blank" rel="noopener noreferrer" style="color: white; text-decoration: none; font-size: 0.75rem; font-weight: 600; word-break: break-all; line-height: 1.4; display: block; margin-bottom: 0.5rem;">ai.hamini.store</a>
+                        <p style="margin: 0; color: white; font-size: 0.7rem; opacity: 0.85;">배포 환경: AWS Lightsail (Ubuntu 22.04)</p>
+                    </div>
                     
                     <div style="margin-bottom: 2rem;">
-                        <h3 style="font-size: 0.9rem; color: #2d3748; margin-bottom: 0.8rem; font-weight: 700;">• 주요 기능</h3>
+                        <h3 style="font-size: 0.9rem; color: #2d3748; margin-bottom: 0.8rem; font-weight: 700;">• 주요 기능/ 기술 구현</h3>
                         <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; color: #4a5568; line-height: 1.7;">
-                            <li style="margin-bottom: 0.4rem;">- 실시간 영상 스트림 처리</li>
-                            <li style="margin-bottom: 0.4rem;">- YOLOv8 기반 사람 객체 감지</li>
-                            <li style="margin-bottom: 0.4rem;">- MediaPipe 골격 추출</li>
-                            <li style="margin-bottom: 0.4rem;">- 보행 패턴 분석 및 이상 탐지</li>
-                            <li style="margin-bottom: 0.4rem;">- 보행 데이터 시각화 대시보드</li>
-                            <li style="margin-bottom: 0;">- 분석 결과 자동 저장 및 리포트</li>
+                            <li style="margin-bottom: 0.4rem;">- YOLOv8 기반 차량 객체 감지</li>
+                            <li style="margin-bottom: 0.4rem;">- 주차장 슬롯별 점유 상태 실시간 계산</li>
+                            <li style="margin-bottom: 0.4rem;">- 전체 주차장 현황 모니터링 대시보드</li>
+                            <li style="margin-bottom: 0.4rem;">- 색상 박스를 활용한 직관적 시각화 (빈 자리/점유 자리)</li>
+                            <li style="margin-bottom: 0.4rem;">- CCTV 실시간 영상 스트림 처리</li>
+                            <li style="margin-bottom: 0.4rem;">- OpenCV를 통한 영상 전처리</li>
                         </ul>
                     </div>
 
@@ -80,22 +115,28 @@
                         <div style="margin-bottom: 1.2rem;">
                             <p style="font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">⚙️ 개발 환경</p>
                             <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">React</span>
+                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">JavaScript</span>
                                 <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">Python</span>
-                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">OpenCV</span>
                             </div>
                         </div>
                         <div style="margin-bottom: 1.2rem;">
                             <p style="font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">📚 프레임워크 & 라이브러리</p>
                             <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
-                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">FastAPI</span>
                                 <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">YOLOv8</span>
                                 <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">Miniconda</span>
                             </div>
                         </div>
-                        <div>
+                         <div style="margin-top: 1.2rem;">
+                            <p style="font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">🤝 협업 툴</p>
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">GitHub</span>
+                            </div>
+                        </div>
+                         <div style="margin-top: 1.2rem;">
                             <p style="font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">🐳 배포 </p>
                             <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
-                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">Docker</span>
+                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">AWS Lightsail</span>
                             </div>
                         </div>
                     </div>
@@ -130,41 +171,6 @@
                         </div>
                     </section>
 
-                    <section style="margin-bottom: 2.5rem;">
-                        <h2 style="font-size: 1.3rem; color: #2d3748; margin-bottom: 1rem; font-weight: 700; border-bottom: 2px solid #667eea; padding-bottom: 0.5rem;">• 기술적 도전</h2>
-                        <div style="display: grid; gap: 0.8rem;">
-                            <div style="background: #f7fafc; padding: 1.2rem; border-radius: 8px; border-left: 3px solid #667eea;">
-                                <h4 style="color: #2d3748; margin: 0 0 0.4rem 0; font-size: 0.95rem; font-weight: 600;">⚡ 실시간 처리 성능 최적화</h4>
-                                <p style="color: #4a5568; font-size: 0.85rem; line-height: 1.6; margin: 0;">고해상도 영상 처리 시 프레임 드롭 문제를 TensorRT 모델 최적화로 해결하여 추론 속도를 3배 향상시켰습니다.</p>
-                            </div>
-                            <div style="background: #f7fafc; padding: 1.2rem; border-radius: 8px; border-left: 3px solid #f6ad55;">
-                                <h4 style="color: #2d3748; margin: 0 0 0.4rem 0; font-size: 0.95rem; font-weight: 600;">🎯 다양한 환경에서의 정확도 개선</h4>
-                                <p style="color: #4a5568; font-size: 0.85rem; line-height: 1.6; margin: 0;">조명, 각도, 배경 변화에 따른 감지 정확도 편차를 Data Augmentation과 Transfer Learning 기법으로 mAP 88%까지 향상시켰습니다.</p>
-                            </div>
-                            <div style="background: #f7fafc; padding: 1.2rem; border-radius: 8px; border-left: 3px solid #48bb78;">
-                                <h4 style="color: #2d3748; margin: 0 0 0.4rem 0; font-size: 0.95rem; font-weight: 600;">🦴 골격 추출 안정화</h4>
-                                <p style="color: #4a5568; font-size: 0.85rem; line-height: 1.6; margin: 0;">MediaPipe를 활용한 33개 신체 랜드마크 추출 시 흔들림과 노이즈를 칼만 필터로 안정화하여 분석 정확도를 높였습니다.</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section>
-                        <h2 style="font-size: 1.3rem; color: #2d3748; margin-bottom: 1rem; font-weight: 700; border-bottom: 2px solid #667eea; padding-bottom: 0.5rem;">• 성과 및 결과</h2>
-                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
-                            <div style="text-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 1.5rem 1rem; border-radius: 10px; color: white;">
-                                <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.3rem;">88%</div>
-                                <div style="font-size: 0.8rem; opacity: 0.95;">감지 정확도 (mAP)</div>
-                            </div>
-                            <div style="text-align: center; background: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%); padding: 1.5rem 1rem; border-radius: 10px; color: white;">
-                                <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.3rem;">30 FPS</div>
-                                <div style="font-size: 0.8rem; opacity: 0.95;">실시간 처리 속도</div>
-                            </div>
-                            <div style="text-align: center; background: linear-gradient(135deg, #48bb78 0%, #38a169 100%); padding: 1.5rem 1rem; border-radius: 10px; color: white;">
-                                <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.3rem;">1000+</div>
-                                <div style="font-size: 0.8rem; opacity: 0.95;">학습 데이터셋</div>
-                            </div>
-                        </div>
-                    </section>
                 </div>
             </div>
         </div>

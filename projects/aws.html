@@ -11,19 +11,48 @@
     <!-- Header -->
     <header>
         <div class="nav-container">
-            <div class="logo"><a href="/" style="text-decoration: none; color: inherit;">Hamini</a></div>
-            <nav>
-                <ul>
-                    <li><a href="/#home">Home</a></li>
-                    <li><a href="/#about">About</a></li>
-                    <li><a href="/#philosophy">Philosophy</a></li>
-                    <li><a href="/#architecture">Architecture</a></li>
-                    <li><a href="/#projects">Projects</a></li>
-                    <li><a href="/board">Board</a></li>
-                    <li><a href="/#contact">Contact</a></li>
-                    <li><a href="/login.html" class="login-btn">Login</a></li>
-                </ul>
-            </nav>
+            <div class="header-top">
+                <div class="logo"><a href="/" style="text-decoration: none; color: inherit;">Hamini</a></div>
+                <div class="language-switcher">
+                    <button class="lang-current">
+                        <span class="lang-icon">🌐</span>
+                        <span class="lang-text">KOR</span>
+                        <span class="lang-arrow">▼</span>
+                    </button>
+                    <div class="lang-dropdown">
+                        <button class="lang-option active" data-lang="ko">한국어</button>
+                        <button class="lang-option" data-lang="en">English</button>
+                    </div>
+                </div>
+            </div>
+            <div class="header-bottom">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="/#home" data-ko="Home" data-en="Home">Home</a></li>
+                        <li><a href="/#about" data-ko="Profile" data-en="Profile">Profile</a></li>
+                        <li><a href="/#projects" data-ko="Projects" data-en="Projects">Projects</a></li>
+                        <li><a href="/board" data-ko="Board" data-en="Board">Board</a></li>
+                        <li><a href="/#contact" data-ko="Contact" data-en="Contact">Contact</a></li>
+                    </ul>
+                    <a href="/login.html" class="login-btn" id="navLoginBtn">Login</a>
+                    <div class="user-dropdown" id="userDropdown" style="display: none;">
+                        <button class="user-btn">
+                            <span class="user-icon">👤</span>
+                            <span class="user-name" id="userName">User</span>
+                            <span class="user-arrow">▼</span>
+                        </button>
+                        <div class="user-dropdown-menu">
+                            <a href="#" id="myPageBtn" data-ko="마이페이지" data-en="My Page">마이페이지</a>
+                            <a href="#" id="logoutBtn" data-ko="로그아웃" data-en="Logout">로그아웃</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
         </div>
     </header>
 
@@ -45,23 +74,27 @@
                             ☁️
                         </div>
                         <h2 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: #2d3748; font-weight: 700;">AWS 클라우드 프로젝트</h2>
-                        <p style="color: #718096; font-size: 0.85rem; margin: 0;">2024.03 - 2024.05</p>
-                    </div>
-
-                    <div style="padding: 1rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; text-align: center; margin-bottom: 30px;">
-                        <p style="margin: 0 0 0.5rem 0; color: white; font-size: 0.75rem; opacity: 0.9;">🔗 GitHub Repository</p>
-                        <a href="https://github.com/jhhhhe12/aws-infrastructure" target="_blank" rel="noopener noreferrer" style="color: white; text-decoration: none; font-size: 0.75rem; font-weight: 600; word-break: break-all; line-height: 1.4;">github.com/jhhhhe12/aws-infra</a>
+                        <p style="color: #718096; font-size: 0.85rem; margin: 0;">2024.12</p>
                     </div>
                     
                     <div style="margin-bottom: 2rem;">
-                        <h3 style="font-size: 0.9rem; color: #2d3748; margin-bottom: 0.8rem; font-weight: 700;">• 주요 구성 요소</h3>
+                        <h3 style="font-size: 0.9rem; color: #2d3748; margin-bottom: 0.8rem; font-weight: 700;">• 주요 작업</h3>
                         <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; color: #4a5568; line-height: 1.7;">
-                            <li style="margin-bottom: 0.4rem;">- Multi-AZ 고가용성 구성</li>
-                            <li style="margin-bottom: 0.4rem;">- Auto Scaling 자동 확장</li>
-                            <li style="margin-bottom: 0.4rem;">- VPC/Security Group 보안</li>
-                            <li style="margin-bottom: 0.4rem;">- S3 정적 파일 호스팅</li>
-                            <li style="margin-bottom: 0.4rem;">- RDS 관리형 데이터베이스</li>
-                            <li style="margin-bottom: 0;">- CloudWatch 모니터링/알람</li>
+                            <li style="margin-bottom: 0.4rem;">- 포팅: Windows → Linux 환경 전환</li>
+                            <li style="margin-bottom: 0.4rem;">- 배포: AWS Lightsail 인스턴스 구성</li>
+                            <li style="margin-bottom: 0.4rem;">- 네트워크: 방화벽, 도메인 연결</li>
+                            <li style="margin-bottom: 0;">- 운영: 서비스 자동화, 로그 관리</li>
+                        </ul>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <h3 style="font-size: 0.9rem; color: #2d3748; margin-bottom: 0.8rem; font-weight: 700;">• 학습 내용</h3>
+                        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; color: #4a5568; line-height: 1.7;">
+                            <li style="margin-bottom: 0.4rem;">- Linux 명령어 및 시스템 관리</li>
+                            <li style="margin-bottom: 0.4rem;">- SSH 원격 접속 및 보안</li>
+                            <li style="margin-bottom: 0.4rem;">- 클라우드 인프라 기본 개념</li>
+                            <li style="margin-bottom: 0.4rem;">- DNS 설정 및 도메인 관리</li>
+                            <li style="margin-bottom: 0;">- 서비스 모니터링 및 문제 해결</li>
                         </ul>
                     </div>
 
@@ -70,26 +103,8 @@
                         <div style="margin-bottom: 1.2rem;">
                             <p style="font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">☁️ AWS 서비스</p>
                             <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
-                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">EC2</span>
-                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">S3</span>
-                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">RDS</span>
-                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">VPC</span>
-                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">ALB</span>
-                            </div>
-                        </div>
-                        <div style="margin-bottom: 1.2rem;">
-                            <p style="font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">⚙️ IaC & 자동화</p>
-                            <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
-                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">Terraform</span>
-                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">CloudFormation</span>
-                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">CI/CD</span>
-                            </div>
-                        </div>
-                        <div>
-                            <p style="font-size: 0.8rem; color: #718096; margin-bottom: 0.5rem;">📊 모니터링</p>
-                            <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
-                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">CloudWatch</span>
-                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">SNS</span>
+                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">AWS Lightsail</span>
+                                <span style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #2d3748; font-weight: 500;">Ubuntu 22.04 LTS</span>
                             </div>
                         </div>
                     </div>
@@ -100,64 +115,9 @@
                     <section style="margin-bottom: 2.5rem;">
                         <h2 style="font-size: 1.3rem; color: #2d3748; margin-bottom: 1rem; font-weight: 700; border-bottom: 2px solid #667eea; padding-bottom: 0.5rem;">• 프로젝트 개요</h2>
                         <p style="line-height: 1.8; color: #4a5568; font-size: 0.95rem; margin: 0;">
-                            AWS 클라우드 서비스를 활용하여 고가용성, 확장 가능한 인프라를 설계하고 구현한 프로젝트입니다.<br>
-                            Infrastructure as Code(IaC) 접근 방식을 통해 자동화된 배포 파이프라인을 구축하고, Multi-AZ 구성과 Auto Scaling을 통해 안정적이고 탄력적인 서비스 운영 환경을 제공합니다.
+                            Windows 개발 환경에서 작업한 프로젝트들을 Linux 운영 환경으로 포팅하고 AWS Lightsail에 배포한 프로젝트입니다.<br>
+                            클라우드 인프라 구축부터 도메인 연결, 서비스 자동화까지 실제 운영 환경 구성의 전 과정을 경험했습니다.
                         </p>
-                    </section>
-
-                    <section style="margin-bottom: 2.5rem;">
-                        <h2 style="font-size: 1.3rem; color: #2d3748; margin-bottom: 1rem; font-weight: 700; border-bottom: 2px solid #667eea; padding-bottom: 0.5rem;">• AWS 인프라 아키텍처</h2>
-                        <div style="background: #f7fafc; padding: 2rem; border-radius: 8px; text-align: center; margin-bottom: 1rem;">
-                            <div style="font-size: 3rem; margin-bottom: 1rem;">📊</div>
-                            <p style="font-size: 1.1rem; color: #2d3748; font-weight: 600; margin-bottom: 1rem;">AWS 아키텍처 다이어그램</p>
-                            <p style="color: #4a5568; font-size: 0.9rem; line-height: 1.8;">
-                                Internet Gateway → ALB (Application Load Balancer)<br>
-                                → Multi-AZ EC2 Auto Scaling Group<br>
-                                → RDS Multi-AZ (Primary + Standby)<br>
-                                → S3 (Static Assets) + CloudFront CDN
-                            </p>
-                        </div>
-                        <div style="background: #ebf4ff; border-left: 3px solid #667eea; padding: 1rem 1.2rem; border-radius: 4px;">
-                            <p style="line-height: 1.7; color: #2d3748; font-size: 0.9rem; margin: 0;">
-                                VPC 내부에 Public/Private Subnet을 분리하여 보안성을 높이고, NAT Gateway를 통해 Private Subnet의 외부 통신을 안전하게 처리합니다.
-                            </p>
-                        </div>
-                    </section>
-
-                    <section style="margin-bottom: 2.5rem;">
-                        <h2 style="font-size: 1.3rem; color: #2d3748; margin-bottom: 1rem; font-weight: 700; border-bottom: 2px solid #667eea; padding-bottom: 0.5rem;">• 기술적 도전</h2>
-                        <div style="display: grid; gap: 0.8rem;">
-                            <div style="background: #f7fafc; padding: 1.2rem; border-radius: 8px; border-left: 3px solid #667eea;">
-                                <h4 style="color: #2d3748; margin: 0 0 0.4rem 0; font-size: 0.95rem; font-weight: 600;">💰 비용 최적화</h4>
-                                <p style="color: #4a5568; font-size: 0.85rem; line-height: 1.6; margin: 0;">초기 클라우드 비용이 예상보다 높게 발생하는 문제를 Reserved Instance와 Spot Instance를 전략적으로 활용하여 월 운영 비용을 40% 절감했습니다.</p>
-                            </div>
-                            <div style="background: #f7fafc; padding: 1.2rem; border-radius: 8px; border-left: 3px solid #f6ad55;">
-                                <h4 style="color: #2d3748; margin: 0 0 0.4rem 0; font-size: 0.95rem; font-weight: 600;">🔄 무중단 배포 구현</h4>
-                                <p style="color: #4a5568; font-size: 0.85rem; line-height: 1.6; margin: 0;">업데이트 시 서비스 중단이 발생하는 문제를 Blue-Green Deployment 전략과 ALB 타겟 그룹 전환으로 무중단 배포를 구현했습니다.</p>
-                            </div>
-                            <div style="background: #f7fafc; padding: 1.2rem; border-radius: 8px; border-left: 3px solid #48bb78;">
-                                <h4 style="color: #2d3748; margin: 0 0 0.4rem 0; font-size: 0.95rem; font-weight: 600;">🔒 보안 강화</h4>
-                                <p style="color: #4a5568; font-size: 0.85rem; line-height: 1.6; margin: 0;">VPC, Security Group, NACL을 활용한 다층 보안 구조를 설계하고 IAM 역할 기반 접근 제어로 최소 권한 원칙을 적용했습니다.</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section>
-                        <h2 style="font-size: 1.3rem; color: #2d3748; margin-bottom: 1rem; font-weight: 700; border-bottom: 2px solid #667eea; padding-bottom: 0.5rem;">• 성과 및 결과</h2>
-                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
-                            <div style="text-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 1.5rem 1rem; border-radius: 10px; color: white;">
-                                <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.3rem;">99.9%</div>
-                                <div style="font-size: 0.8rem; opacity: 0.95;">서비스 가용성</div>
-                            </div>
-                            <div style="text-align: center; background: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%); padding: 1.5rem 1rem; border-radius: 10px; color: white;">
-                                <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.3rem;">40%</div>
-                                <div style="font-size: 0.8rem; opacity: 0.95;">비용 절감</div>
-                            </div>
-                            <div style="text-align: center; background: linear-gradient(135deg, #48bb78 0%, #38a169 100%); padding: 1.5rem 1rem; border-radius: 10px; color: white;">
-                                <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.3rem;">< 200ms</div>
-                                <div style="font-size: 0.8rem; opacity: 0.95;">평균 응답 시간</div>
-                            </div>
-                        </div>
                     </section>
                 </div>
             </div>
